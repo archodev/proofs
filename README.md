@@ -2,6 +2,8 @@
 
 Lean-checked projects, ordered by the earliest located formulation of each problem. Dates below describe the statement-to-result window through November 2026; they do not establish priority or independent peer review.
 
+This collection counts five projects, including new Lean certificates for the thin-cuboid and 11-cube results that formalize earlier constructions. The count also includes explicit proofs or disproofs of stated questions where no equivalent prior formalization or explicit writeup has been located. A certificate built from a prior construction is identified as such; the count and dates do not claim a global first or establish how long a result remained open.
+
 ![Five cycle vertices and a sixth witness connected to 1 and 3, with dashed nonedges to 2 and 4.](assets/finite-ectf-example.svg)
 
 *One extension request: A = {1, 3}, B = {2, 4}. The sixth vertex is adjacent to A and avoids B. This is a schematic of six records from the construction, not a six-vertex k-ECTF graph; the drawing makes no unit-distance claim.*
