@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 310" width="820" height="310" role="img" aria-labelledby="t d">
+  <title id="t">Equal LCMs of six consecutive integers: the known pairs all overlap</title>
+  <desc id="d">Three pairs of runs of six consecutive positive integers, each pair with the same least common multiple, drawn as two offset rows. The first run is shown as blue circles and the second as orange squares. Shared integers are filled and sit on a shaded band. 4 through 9 and 5 through 10 both have LCM 2,520 and share 5 through 9. 6 through 11 and 7 through 12 both have LCM 27,720 and share 7 through 11. 14 through 19 and 16 through 21 both have LCM 1,627,920 and share 16 through 19. Conclusion: every known pair overlaps, and the new proof rules out disjoint runs of length six with equal LCM.</desc>
+
+  <rect x="0" y="0" width="820" height="310" fill="#fbfaf6"/>
+
+  <g font-family="sans-serif" fill="#1a1a1a" text-anchor="middle">
+    <text x="410" y="32" font-size="19" font-weight="700">Six consecutive integers with the same LCM: the known pairs overlap</text>
+
+    <!-- Legend -->
+    <g font-size="12" text-anchor="start">
+      <circle cx="214" cy="56" r="7" fill="#ffffff" stroke="#1f5fbf" stroke-width="2"/>
+      <text x="227" y="60">first run</text>
+      <rect x="297" y="49" width="14" height="14" fill="#ffffff" stroke="#c8640f" stroke-width="2"/>
+      <text x="318" y="60">second run</text>
+      <rect x="403" y="47" width="30" height="18" fill="#e6e2d6"/>
+      <circle cx="412" cy="56" r="5" fill="#1f5fbf"/>
+      <rect x="420" y="51" width="10" height="10" fill="#c8640f"/>
+      <text x="440" y="60">filled on shaded band = integer in both runs</text>
+    </g>
+
+    <!-- Panel dividers -->
+    <line x1="275" y1="80" x2="275" y2="222" stroke="#cfcabc" stroke-width="1"/>
+    <line x1="545" y1="80" x2="545" y2="222" stroke="#cfcabc" stroke-width="1"/>
+
+    <!-- Panel 1 -->
+    <text x="140" y="92" font-size="14" font-weight="700">4–9 and 5–10</text>
+    <text x="140" y="110" font-size="13">LCM = 2,520</text>
+    <rect x="64" y="122" width="152" height="74" rx="6" fill="#e6e2d6"/>
+    <g font-size="11" font-weight="700">
+      <circle cx="50" cy="140" r="11" fill="#ffffff" stroke="#1f5fbf" stroke-width="2"/><text x="50" y="144" fill="#1f5fbf">4</text>
+      <circle cx="80" cy="140" r="11" fill="#1f5fbf"/><text x="80" y="144" fill="#ffffff">5</text>
+      <circle cx="110" cy="140" r="11" fill="#1f5fbf"/><text x="110" y="144" fill="#ffffff">6</text>
+      <circle cx="140" cy="140" r="11" fill="#1f5fbf"/><text x="140" y="144" fill="#ffffff">7</text>
+      <circle cx="170" cy="140" r="11" fill="#1f5fbf"/><text x="170" y="144" fill="#ffffff">8</text>
+      <circle cx="200" cy="140" r="11" fill="#1f5fbf"/><text x="200" y="144" fill="#ffffff">9</text>
+      <rect x="69" y="167" width="22" height="22" fill="#c8640f"/><text x="80" y="182" fill="#ffffff">5</text>
+      <rect x="99" y="167" width="22" height="22" fill="#c8640f"/><text x="110" y="182" fill="#ffffff">6</text>
+      <rect x="129" y="167" width="22" height="22" fill="#c8640f"/><text x="140" y="182" fill="#ffffff">7</text>
+      <rect x="159" y="167" width="22" height="22" fill="#c8640f"/><text x="170" y="182" fill="#ffffff">8</text>
+      <rect x="189" y="167" width="22" height="22" fill="#c8640f"/><text x="200" y="182" fill="#ffffff">9</text>
+      <rect x="220" y="168" width="20" height="20" fill="#ffffff" stroke="#c8640f" stroke-width="2"/><text x="230" y="182" fill="#c8640f">10</text>
+    </g>
+    <text x="140" y="216" font-size="12">shares 5, 6, 7, 8, 9</text>
+
+    <!-- Panel 2 -->
+    <text x="410" y="92" font-size="14" font-weight="700">6–11 and 7–12</text>
+    <text x="410" y="110" font-size="13">LCM = 27,720</text>
+    <rect x="334" y="122" width="152" height="74" rx="6" fill="#e6e2d6"/>
+    <g font-size="11" font-weight="700">
+      <circle cx="320" cy="140" r="11" fill="#ffffff" stroke="#1f5fbf" stroke-width="2"/><text x="320" y="144" fill="#1f5fbf">6</text>
+      <circle cx="350" cy="140" r="11" fill="#1f5fbf"/><text x="350" y="144" fill="#ffffff">7</text>
+      <circle cx="380" cy="140" r="11" fill="#1f5fbf"/><text x="380" y="144" fill="#ffffff">8</text>
+      <circle cx="410" cy="140" r="11" fill="#1f5fbf"/><text x="410" y="144" fill="#ffffff">9</text>
+      <circle cx="440" cy="140" r="11" fill="#1f5fbf"/><text x="440" y="144" fill="#ffffff">10</text>
+      <circle cx="470" cy="140" r="11" fill="#1f5fbf"/><text x="470" y="144" fill="#ffffff">11</text>
+      <rect x="339" y="167" width="22" height="22" fill="#c8640f"/><text x="350" y="182" fill="#ffffff">7</text>
+      <rect x="369" y="167" width="22" height="22" fill="#c8640f"/><text x="380" y="182" fill="#ffffff">8</text>
+      <rect x="399" y="167" width="22" height="22" fill="#c8640f"/><text x="410" y="182" fill="#ffffff">9</text>
+      <rect x="429" y="167" width="22" height="22" fill="#c8640f"/><text x="440" y="182" fill="#ffffff">10</text>
+      <rect x="459" y="167" width="22" height="22" fill="#c8640f"/><text x="470" y="182" fill="#ffffff">11</text>
+      <rect x="490" y="168" width="20" height="20" fill="#ffffff" stroke="#c8640f" stroke-width="2"/><text x="500" y="182" fill="#c8640f">12</text>
+    </g>
+    <text x="410" y="216" font-size="12">shares 7, 8, 9, 10, 11</text>
+
+    <!-- Panel 3 -->
+    <text x="680" y="92" font-size="14" font-weight="700">14–19 and 16–21</text>
+    <text x="680" y="110" font-size="13">LCM = 1,627,920</text>
+    <rect x="622" y="122" width="116" height="74" rx="6" fill="#e6e2d6"/>
+    <g font-size="11" font-weight="700">
+      <circle cx="582" cy="140" r="11" fill="#ffffff" stroke="#1f5fbf" stroke-width="2"/><text x="582" y="144" fill="#1f5fbf">14</text>
+      <circle cx="610" cy="140" r="11" fill="#ffffff" stroke="#1f5fbf" stroke-width="2"/><text x="610" y="144" fill="#1f5fbf">15</text>
+      <circle cx="638" cy="140" r="11" fill="#1f5fbf"/><text x="638" y="144" fill="#ffffff">16</text>
+      <circle cx="666" cy="140" r="11" fill="#1f5fbf"/><text x="666" y="144" fill="#ffffff">17</text>
+      <circle cx="694" cy="140" r="11" fill="#1f5fbf"/><text x="694" y="144" fill="#ffffff">18</text>
+      <circle cx="722" cy="140" r="11" fill="#1f5fbf"/><text x="722" y="144" fill="#ffffff">19</text>
+      <rect x="627" y="167" width="22" height="22" fill="#c8640f"/><text x="638" y="182" fill="#ffffff">16</text>
+      <rect x="655" y="167" width="22" height="22" fill="#c8640f"/><text x="666" y="182" fill="#ffffff">17</text>
+      <rect x="683" y="167" width="22" height="22" fill="#c8640f"/><text x="694" y="182" fill="#ffffff">18</text>
+      <rect x="711" y="167" width="22" height="22" fill="#c8640f"/><text x="722" y="182" fill="#ffffff">19</text>
+      <rect x="740" y="168" width="20" height="20" fill="#ffffff" stroke="#c8640f" stroke-width="2"/><text x="750" y="182" fill="#c8640f">20</text>
+      <rect x="768" y="168" width="20" height="20" fill="#ffffff" stroke="#c8640f" stroke-width="2"/><text x="778" y="182" fill="#c8640f">21</text>
+    </g>
+    <text x="680" y="216" font-size="12">shares 16, 17, 18, 19</text>
+
+    <!-- Conclusion -->
+    <line x1="40" y1="238" x2="780" y2="238" stroke="#1a1a1a" stroke-width="1"/>
+    <text x="410" y="264" font-size="15">Every known equal-LCM pair of six-term runs overlaps — they share at least four integers.</text>
+    <text x="410" y="290" font-size="15" font-weight="700">The new proof rules out disjoint runs of six consecutive integers with equal LCM.</text>
+  </g>
+</svg>

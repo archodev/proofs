@@ -1,73 +1,75 @@
 # Proofs
 
-Lean-checked projects, ordered by the earliest located formulation of each problem. Dates below describe the statement-to-result window through November 2026; they do not establish priority or independent peer review.
+**11 published projects:** 8 checked in [Lean](https://lean-lang.org/) and 3 written proofs with reproducible computer checks. Each project links to its source and replay instructions. Some formalizations certify earlier constructions; 11 is the number of projects, not a count of new discoveries.
 
-This section lists eight Lean-checked projects, including new Lean certificates for the thin-cuboid and 11-cube results that formalize earlier constructions. The count also includes explicit proofs or disproofs of stated questions where no equivalent prior formalization or explicit writeup has been located. A certificate built from a prior construction is identified as such; the count and dates do not claim a global first or establish how long a result remained open.
+The two lists are oldest first. The ages run from the earliest formulation we located to the November 2026 result. They do not imply a problem stayed open throughout.
 
-## Results, oldest question first
+## Lean-checked results
 
-1. **1992 — [Finite existentially complete triangle-free graphs](proofs/finite-ectf/README.md).** A finite triangle-free graph with the fresh-witness extension property for every natural k.
+1. **1992 · [Finite triangle-free networks with a fresh witness](proofs/finite-ectf/README.md).** Pick a size limit. A finite triangle-free network can be built so that every small request for a new node to connect to one group and avoid another is met, as long as the group it connects to contains no links. The theorem works for every size limit. [Cherlin, Problems 8–9](https://sites.math.rutgers.edu/~cherlin/Paper/1992CombProblems.pdf), about 34 years. Lean checks the finite graph claim; Henson pseudofiniteness follows by a known equivalence.
 
-   Cherlin's [Problem 8 and equivalent finite extension formulation, Problem 9](https://sites.math.rutgers.edu/~cherlin/Paper/1992CombProblems.pdf), to this team's November 2026 result: about 34 years. The Lean theorem is the finite graph assertion; Henson pseudofiniteness is a mathematical consequence through the known equivalence, not formalized here.
+   ![Vertex 6 joins vertices 1 and 3 but avoids 2 and 4.](assets/finite-ectf-example.svg)
 
-   ![Five cycle vertices and a sixth witness connected to 1 and 3, with dashed nonedges to 2 and 4.](assets/finite-ectf-example.svg)
+   *A single extension request, not a whole graph with the extension property.*
 
-   *One extension request: A = {1, 3}, B = {2, 4}. The sixth vertex is adjacent to A and avoids B. This is a schematic of six records from the construction, not a six-vertex k-ECTF graph; the drawing makes no unit-distance claim.*
+2. **2012 · [Two thin-cuboid counterexamples](proofs/thin-cuboid/README.md).** Remove a cube only when it touches exactly three remaining cubes by a face. These two dismantlings leave 17 isolated cubes in a 2 × 3 × 9 block and 15 in a 3 × 3 × 6 block, refuting two clauses of [Barát and Wanless’s conjecture](https://arxiv.org/html/2603.23913#S6). The [earlier constructions](https://arxiv.org/abs/2209.07594) are newly checked in Lean here, about 14 years after the stated problem.
 
-2. **2012 — [Two thin-cuboid dismantlings](proofs/thin-cuboid/README.md).** Exact-degree deletion certificates for the 2 × 3 × 9 and 3 × 3 × 6 counterexamples.
+   ![Slice grids for the 17 and 15 surviving cubes.](assets/thin-cuboid-slices.svg)
 
-   Barát and Wanless, [Conjecture 2, §6](https://arxiv.org/html/2603.23913#S6). The instances use earlier constructions of [Dukes, Noel and Romer](https://arxiv.org/abs/2209.07594), newly certified here; see also their [2022 preprint, §5](https://arxiv.org/html/2209.07594v1#S5). About 14 years elapsed between the 2012 statement and this team's 2026 Lean certificate; this does not assert the result was continuously open.
+   *Filled cells show the actual survivors checked in Lean.*
 
-   ![Slice grids showing 17 survivors in a 2 by 3 by 9 cuboid and 15 in a 3 by 3 by 6 cuboid.](assets/thin-cuboid-slices.svg)
+3. **17 Dec 2025 · [A same-color five-step loop](proofs/plane-c5/README.md).** Color every point of the plane with either of two colors. Five distinct points of one color always form a loop of five unit-length steps. It need not be a regular pentagon, and the coloring need not be measurable. [Axenovich, Liu and Sagdeev, Question 3](https://arxiv.org/html/2512.15516v3#S6.SS1), about 11 months.
 
-   *Terminal sets from the checked zero labels in the thin-cuboid source. Each slice fixes the third coordinate; filled cells survive the deletion sequence.*
+   ![Five points joined by five equal-length steps.](assets/illustrations/plane-c5.svg)
 
-3. **17 Dec 2025 — [Same-color five-cycles in the plane](proofs/plane-c5/README.md).** Color the entire plane with two colors in any way. Five points of one color always form a loop of five unit-length edges. The loop need not be a regular pentagon. [Question 3](https://arxiv.org/html/2512.15516v3#S6.SS1), about 11 months to this formalization.
+   *An example loop from the two-circle construction; the theorem applies to every two-coloring.*
 
-4. **17 Apr 2026 — [Odd edge coloring](proofs/odd-edge-coloring/README.md).** Every finite simple 3-connected graph of odd order and minimum degree at least four has an odd edge coloring with at most three colors.
+4. **17 Apr 2026 · [Odd edge coloring](proofs/odd-edge-coloring/README.md).** Paint the edges with at most three colors so each color occurs at each vertex either zero times or an odd number of times. This always works in a simple graph with an odd number of vertices, at least four edges at every vertex, and connectivity that survives removing any two vertices. [Kano, Maezawa and Ozeki, Conjecture 6](https://arxiv.org/html/2604.15824), about 7 months.
 
-   Kano, Maezawa and Ozeki, [Conjecture 6](https://arxiv.org/html/2604.15824); about 7 months from the April 2026 statement to this team's November 2026 result. The project also checks earlier cases and a form of Tutte's nonseparating cycle theorem.
+   ![Three, one and one edges of each color pass the rule; two, two and one fail.](assets/illustrations/odd-edge-coloring.svg)
 
-5. **8 Jun 2026 — [Uniqueness for two families of tetrahedral dessins](proofs/ak14-dessins/README.md).** In these two families, the specified branching data determine the oriented drawing up to relabeling. Lean checks uniqueness for every degree; existence is a separate result in [the original paper](https://arxiv.org/html/2606.10079#S1.SS4). About 5 months to this formalization.
+   *A local illustration of the rule, not a coloring of an entire graph.*
 
-6. **2 Jul 2026 — [Polygon matching diameter](proofs/polygon-matching-diameter/README.md).** Labelled diameter at most 32g when n = 2g + 1, refuting a uniform joint lower bound.
+5. **8 Jun 2026 · [Uniqueness of tetrahedral dessins](proofs/ak14-dessins/README.md).** In two families of maps on a sphere, the branching data at three fixed points determine the whole oriented map up to relabeling. Lean checks uniqueness in every degree; the [original paper](https://arxiv.org/html/2606.10079#S1.SS4) separately proves existence. About 5 months.
 
-   Gross and Šarković, [Conjecture 2.10](https://arxiv.org/html/2607.02410v1#S2); about 5 months to the November 2026 result. The theorem does not settle every asymptotic regime.
+   ![Two sets of three branch cycles related by a single relabeling.](assets/illustrations/ak14-dessins.svg)
 
-   ![Three side-labelled hexagons showing two genus-one chord swaps: 12 35 46, then 13 25 46, then 13 24 56.](assets/polygon-genus-one-swaps.svg)
+   *The same relabeling must work for all three branches.*
 
-   *An illustrative two-swap path: the first swap keeps 46, the second keeps 13. Each matching has genus one; the theorem covers a broader family.*
+6. **2 Jul 2026 · [How many swaps between polygon matchings?](proofs/polygon-matching-diameter/README.md).** Pair the numbered sides of a polygon, then glue them to make a surface with `g` handles. When there are `2g + 1` pairs, at most `32g` pair swaps connect any two matching patterns while preserving the handle count. That refutes [the proposed uniform lower bound](https://arxiv.org/html/2607.02410v1#S2), not every variant of the question. About 5 months.
 
-7. **14 Nov 2026 — [11- and 16-cube box-free colorings](proofs/boxfree-11/README.md).** The minimum number of monochromatic boxes is zero in both cubes.
+   ![Two swaps between labeled pairings on six sides.](assets/polygon-genus-one-swaps.svg)
 
-   Alm and Miller, [Problem 1](https://arxiv.org/html/2611.19635v1#S8). This adapts [Menezes's earlier construction](https://arxiv.org/html/2609.22381v2#S3); about 12 days from the statement to this team's formalization, not a claim of discovery priority or time open.
+   *This two-swap example keeps one handle throughout.*
 
-   ![Two 11 by 11 colored slices of the certified witness, at z equals 0 and z equals 2.](assets/boxfree-11-slices.svg)
+7. **14 Nov 2026 · [Box-free 11- and 16-cubes](proofs/boxfree-11/README.md).** Two colors suffice to color either cube grid so that no axis-aligned box has eight corners of the same color. The Lean certificates adapt [Menezes’s earlier construction](https://arxiv.org/html/2609.22381v2#S3). [Alm and Miller, Problem 1](https://arxiv.org/html/2611.19635v1#S8), 12 days.
 
-   *Two slices of the checked witness; Lean verifies the absence of monochromatic boxes throughout the whole cube.*
+   ![Two exact colored slices of the checked 11-cube.](assets/boxfree-11-slices.svg)
 
-8. **14 Nov 2026 — [Exact box-free height for 5 × 7](proofs/boxfree-5x7/README.md).** The largest height is 52, attaining the prior upper bound.
+   *The proof checks every box in the cube, not just these two slices.*
 
-   Alm and Miller, [Problem 3 and §6](https://arxiv.org/html/2611.19635v1#S8); about 12 days from the statement to this team's November 26 result.
+8. **14 Nov 2026 · [Exactly 52 box-free layers](proofs/boxfree-5x7/README.md).** Stack two-colored 5 × 7 grids without creating a box with eight same-color corners. A checked 52-layer example meets the upper bound: 53 layers are impossible. [Alm and Miller, Problem 3](https://arxiv.org/html/2611.19635v1#S6), 12 days.
 
-   ![Two 5 by 7 colored layers, numbered 0 and 1, from the checked 52-layer witness.](assets/boxfree-5x7-layers.svg)
+   ![Two exact layers from the checked 52-layer stack.](assets/boxfree-5x7-layers.svg)
 
-   *Actual layers from the certificate. A same-color rectangle at the same coordinates in two layers would form a forbidden box; no such repetition occurs in the checked stack.*
+   *A same-color rectangle repeated in the same position across layers would make a forbidden box.*
 
-Results are ordered by their earliest located formulation, not by publication date.
+## Written results with computer checks
 
-## Written results, oldest question first
+1. **1979 · [Equal LCMs of six consecutive integers](research/erdos-lcm-six/README.md).** Two non-overlapping runs of six consecutive positive integers cannot have the same least common multiple, even when they are adjacent. Three overlapping pairs were already known. The new argument finishes the disjoint length-six case of [Erdős #677](https://www.erdosproblems.com/677), not the question for arbitrary lengths. About 47 years from the general question.
 
-These results have reproducible computational checks, but are not formalized in Lean.
+   ![Three pairs with equal LCMs; each pair shares four or five numbers.](assets/illustrations/erdos-lcm-six.svg)
 
-1. **1979 — [Equal LCMs of six consecutive integers](research/erdos-lcm-six/README.md).** Two disjoint six-term runs cannot have the same least common multiple, even if they are adjacent. This resolves a fixed-length case of Erdős #677, not the general question.
+   *Every equal-LCM pair at this length overlaps.*
 
-   ![The three known overlapping pairs of six-term runs with equal least common multiples.](research/erdos-lcm-six/collisions.svg)
+2. **2014 · [Eight-cycles in degree-3-critical graphs](research/degree-three-critical-c8/README.md).** Take a graph with `2n − 2` edges where every nonempty proper induced subgraph has a vertex of degree at most two. Once `n ≥ 8`, the graph must contain a loop through eight different vertices. This settles length eight in [Narins, Pokrovskiy and Szabó’s even-cycle question](https://arxiv.org/abs/1408.5289), not the whole family. About 12 years.
 
-2. **2014 — [Eight-cycles in degree-3-critical graphs](research/degree-three-critical-c8/README.md).** Every degree-3-critical graph on at least eight vertices has a simple cycle of length eight. This is the length-eight case of the even-cycle question.
+   ![The eight-vertex candidate contains an induced six-vertex K3,3.](assets/illustrations/degree-three-critical-c8.svg)
 
-   ![The exceptional eight-vertex graph, highlighting the smaller K3,3 that rules it out.](research/degree-three-critical-c8/exception.svg)
+   *This proper subgraph rules out the remaining candidate type.*
 
-3. **2019 — [Testing every five-way combination of ten binary flags](research/covering-array-55/README.md).** Exactly 56 tests are needed to cover every on/off pattern on any five of the ten flags, versus 1,024 tests for exhaustive coverage of all ten.
+3. **2019 · [Exactly 56 tests for ten binary flags](research/covering-array-55/README.md).** To test every on/off pattern on every selection of five out of ten flags, 56 runs suffice and 55 cannot. Exhaustively testing all ten together would take 1,024. This closes the [2019 lower-bound gap](https://www.sciencedirect.com/science/article/pii/S0096300319300864); the 56-run construction was known. About 7 years.
 
-   ![Three compatible slices forming a triangle in the covering-array test.](research/covering-array-55/corner.svg)
+   ![One illustrative test row and the difference between 56 and 1,024 tests.](assets/illustrations/covering-array-55.svg)
+
+   *In a valid suite, all 32 patterns must occur on every choice of five flags.*
