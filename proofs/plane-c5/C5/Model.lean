@@ -1,0 +1,277 @@
+module
+-- The stationary action and its unitary representation adapt Plasma AI's
+-- Erdos173/Transfer/LabelModel.lean. See THIRD-PARTY.md.
+public import C5.Measurable
+public import OAI.Geometry.PlaneColoring.BorelTransfer
+public import OAI.Analysis.PlaneSpectrum.Carriers
+
+@[expose] public section
+namespace C5.Model
+noncomputable section
+open MeasureTheory OAI OAI.PlaneFiveColor.Spectral OAI.EuclideanFiveColor
+open OAI.EuclideanFiveColor.ContinuousVectors
+open scoped InnerProductSpace
+variable [Carrier]
+
+/-- The constraints are imposed on all simple unit pentagons of the carrier. -/
+def templates : Set (Fin 5 → E) := {p | Pentagon (fun i => (p i : ℂ))}
+
+def Admissible (R : Set (Fin 5 → E)) (c : E → Bool) :=
+  ∀ p ∈ R, ∀ x : E, ∀ u : K, ¬ ∀ i, c (x+kCoeff u*p i) = c (x+kCoeff u*p 0)
+
+variable (R : Set (Fin 5 → E))
+abbrev Space := {c : E → Bool // Admissible R c}
+
+theorem input {c : ℂ → Bool} (avoid : ¬ HasMono c) :
+    Admissible templates (fun a => c (a:ℂ)) := by
+  intro p hp x u h
+  apply avoid
+  refine ⟨_,Pentagon.place hp (x:ℂ) (u := (u.val : ℂ)) (Circle.norm_coe _),?_⟩
+  exact h
+
+theorem isClosed_admissible : IsClosed {η : E → Bool | Admissible R η} := by
+  unfold Admissible
+  simp only [Set.ofPred_forall]
+  refine isClosed_iInter fun p => isClosed_iInter fun _ => isClosed_iInter fun x => isClosed_iInter fun u => ?_
+  let F := fun η : E → Bool => fun i : Fin 5 => η (x+kCoeff u*p i)
+  have hc : Continuous F := continuous_pi fun _ => continuous_apply _
+  exact (isClosed_discrete {f : Fin 5 → Bool | ¬∀ i, f i = f 0}).preimage hc
+
+instance : CompactSpace (Space R) := isCompact_iff_compactSpace.mp (isClosed_admissible R).isCompact
+
+def trans (a : E) (ω : Space R) : Space R := ⟨fun x => ω.val (x+a),by
+  intro p hp x u h
+  exact ω.property p hp (x+a) u (by simpa only [add_right_comm x] using h)⟩
+
+def rotate (b : K) (ω : Space R) : Space R := ⟨fun x => ω.val (kCoeff b*x),by
+  intro p hp x u h
+  exact ω.property p hp (kCoeff b*x) (b*u) (by simpa only [kCoeff_mul,mul_add,mul_assoc] using h)⟩
+/-- Translation by `a` reads the labeling at `x + a`. -/
+@[simp] lemma trans_apply (a : E) (ω : Space R) (x : E) : (trans R a ω).val x = ω.val (x + a) :=
+  rfl
+
+/-- Rotation by `b` reads the labeling at `b x`. -/
+@[simp] lemma rotate_apply (b : K) (ω : Space R) (x : E) :
+    (rotate R b ω).val x = ω.val (kCoeff b * x) := rfl
+
+/-- Translation is continuous. -/
+lemma continuous_trans (a : E) : Continuous (trans R a) := by
+  apply Continuous.subtype_mk
+  exact continuous_pi fun x => (continuous_apply (x + a)).comp continuous_subtype_val
+
+/-- Rotation is continuous. -/
+lemma continuous_rotate (b : K) : Continuous (rotate R b) := by
+  apply Continuous.subtype_mk
+  exact continuous_pi fun x => (continuous_apply (kCoeff b * x)).comp continuous_subtype_val
+
+/-- Translation by `0` is the identity. -/
+@[simp] lemma trans_zero (ω : Space R) : trans R 0 ω = ω := by
+  apply Subtype.ext
+  funext x
+  simp
+
+/-- Translations compose additively. -/
+lemma trans_add (a b : E) (ω : Space R) : trans R a (trans R b ω) = trans R (a + b) ω := by
+  apply Subtype.ext
+  funext x
+  simp [add_assoc]
+
+/-- Rotation by `1` is the identity. -/
+@[simp] lemma rotate_one (ω : Space R) : rotate R 1 ω = ω := by
+  apply Subtype.ext
+  funext x
+  simp
+
+/-- Rotations compose multiplicatively. -/
+lemma rotate_mul (a b : K) (ω : Space R) : rotate R a (rotate R b ω) = rotate R (a * b) ω := by
+  apply Subtype.ext
+  funext x
+  change ω.val (kCoeff b * (kCoeff a * x)) = ω.val (kCoeff (a * b) * x)
+  rw [kCoeff_mul]
+  ring_nf
+
+/-- Translation by `a` after rotation by `b` is rotation after translation by `b a`. -/
+lemma covariance (a : E) (b : K) (ω : Space R) :
+    trans R a (rotate R b ω) = rotate R b (trans R (kCoeff b * a) ω) := by
+  apply Subtype.ext
+  funext x
+  simp only [trans_apply, rotate_apply, mul_add]
+
+/-- Translation as a homeomorphism. -/
+def transHomeo (a : E) : Space R ≃ₜ Space R where
+  toFun := trans R a
+  invFun := trans R (-a)
+  left_inv ω := by rw [trans_add, neg_add_cancel, trans_zero]
+  right_inv ω := by rw [trans_add, add_neg_cancel, trans_zero]
+  continuous_toFun := continuous_trans R a
+  continuous_invFun := continuous_trans R (-a)
+
+/-- Rotation as a homeomorphism. -/
+def rotateHomeo (b : K) : Space R ≃ₜ Space R where
+  toFun := rotate R b
+  invFun := rotate R b⁻¹
+  left_inv ω := by rw [rotate_mul, inv_mul_cancel, rotate_one]
+  right_inv ω := by rw [rotate_mul, mul_inv_cancel, rotate_one]
+  continuous_toFun := continuous_rotate R b
+  continuous_invFun := continuous_rotate R b⁻¹
+
+/-- Translations, indexed by the discrete additive group. -/
+abbrev Trans := Additive DiscreteE
+
+/-- The translation action used by the stationary mean. -/
+def tr (a : Trans) : Space R → Space R := trans R (Multiplicative.toAdd (Additive.toMul a))
+
+/-- The rotation action used by the stationary mean. -/
+def ro (b : Rot) : Space R → Space R := rotate R (rotMul b)
+
+/-- The invariant probability measure generated by the labeling `ω₀`. -/
+def measure (ω₀ : Space R) : Measure (Space R) := StationaryMean.measure (tr R) (ro R) ω₀
+
+/-- The stationary mean is a probability measure. -/
+instance (ω₀ : Space R) : IsProbabilityMeasure (measure R ω₀) :=
+  inferInstanceAs (IsProbabilityMeasure (StationaryMean.measure (tr R) (ro R) ω₀))
+
+/-- Translations preserve the stationary measure. -/
+lemma trans_preserving (ω₀ : Space R) (a : E) :
+    MeasurePreserving (trans R a) (measure R ω₀) (measure R ω₀) := by
+  apply StationaryMean.preserving_of_average (tr R) (ro R) ω₀ (transHomeo R a)
+  intro f
+  apply StationaryMean.average_translation (tr R) (ro R) ω₀
+    (fun a b x => trans_add R _ _ x)
+    (fun b a => Additive.ofMul (Multiplicative.ofAdd
+      (kCoeff (rotMul b) * Multiplicative.toAdd (Additive.toMul a))))
+    (fun a b x => covariance R _ _ x) (Additive.ofMul (Multiplicative.ofAdd a)) f
+    (continuous_trans R a)
+
+/-- Rotations preserve the stationary measure. -/
+lemma rotate_preserving (ω₀ : Space R) (b : K) :
+    MeasurePreserving (rotate R b) (measure R ω₀) (measure R ω₀) := by
+  apply StationaryMean.preserving_of_average (tr R) (ro R) ω₀ (rotateHomeo R b)
+  intro f
+  exact StationaryMean.average_rotation (tr R) (ro R) ω₀
+    (fun a b x => rotate_mul R _ _ x) (mulRot b) f (continuous_rotate R b)
+
+variable (ω₀ : Space R)
+
+/-- The `L²` space of the stationary measure. -/
+abbrev Hilbert := Lp ℂ 2 (measure R ω₀)
+
+/-- The Koopman operator of a translation. -/
+def translation (a : E) : unitary (Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) :=
+  Koopman.unitary (measure R ω₀) (transHomeo R a).toMeasurableEquiv (trans_preserving R ω₀ a)
+
+/-- The Koopman operator of a rotation. -/
+def rotation (b : K) : unitary (Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) :=
+  Koopman.unitary (measure R ω₀) (rotateHomeo R b).toMeasurableEquiv (rotate_preserving R ω₀ b)
+
+/-- The translation representation of the discrete carrier. -/
+def representation : DiscreteE →* unitary (Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) where
+  toFun a := translation R ω₀ (Multiplicative.toAdd a)
+  map_one' := by
+    apply Subtype.ext
+    apply ContinuousLinearMap.ext
+    intro v
+    change Lp.compMeasurePreserving (trans R 0) (trans_preserving R ω₀ 0) v = v
+    have he : trans R 0 = id := funext (trans_zero R)
+    simp only [he, Lp.compMeasurePreserving_id_apply]
+  map_mul' a b := by
+    apply Subtype.ext
+    apply ContinuousLinearMap.ext
+    intro v
+    change Lp.compMeasurePreserving
+        (trans R (Multiplicative.toAdd a + Multiplicative.toAdd b)) _ v =
+      Lp.compMeasurePreserving (trans R (Multiplicative.toAdd a)) _
+        (Lp.compMeasurePreserving (trans R (Multiplicative.toAdd b)) _ v)
+    rw [← Lp.compMeasurePreserving_comp_apply]
+    congr 2
+    funext x
+    exact (congrArg (fun c => trans R c x) (add_comm _ _)).trans (trans_add R _ _ x).symm
+
+/-- The representation acts by composition with translation. -/
+lemma op_apply (a : E) (v : Hilbert R ω₀) : op (representation R ω₀) a v =
+    Lp.compMeasurePreserving (trans R a) (trans_preserving R ω₀ a) v := rfl
+
+/-- The rotation unitaries act by composition with rotation. -/
+lemma rotation_apply (b : K) (v : Hilbert R ω₀) :
+    (rotation R ω₀ b : Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) v =
+      Lp.compMeasurePreserving (rotate R b) (rotate_preserving R ω₀ b) v := rfl
+
+/-- Rotation conjugates translation by `a` to translation by `b a`. -/
+lemma rotation_covariance (b : K) (a : E) (v : Hilbert R ω₀) :
+    (rotation R ω₀ b : Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) (op (representation R ω₀) a v) =
+      op (representation R ω₀) (kCoeff b * a)
+        ((rotation R ω₀ b : Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) v) := by
+  simp only [rotation_apply, op_apply, ← Lp.compMeasurePreserving_comp_apply]
+  congr 2
+  funext x
+  exact covariance R a b x
+
+def rawValue (η : Space R) : ℂ := if η.val 0 then 1 else 0
+lemma raw_memLp : MemLp (rawValue R) 2 (measure R ω₀) := by
+  refine MemLp.of_bound ?_ 1 ?_
+  · have h : Continuous (rawValue R) := (continuous_of_discreteTopology
+      (f := fun a : Bool => if a then (1:ℂ) else 0)).comp ((continuous_apply 0).comp continuous_subtype_val)
+    exact h.aestronglyMeasurable
+  · exact .of_forall fun η => by unfold rawValue; split <;> simp
+def raw := (raw_memLp R ω₀).toLp (rawValue R)
+theorem raw_ae : raw R ω₀ =ᵐ[measure R ω₀] rawValue R := (raw_memLp R ω₀).coeFn_toLp
+theorem raw_fixed (b : K) :
+    (rotation R ω₀ b : Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) (raw R ω₀) = raw R ω₀ := by
+  rw [rotation_apply]
+  apply Lp.ext
+  filter_upwards [Lp.coeFn_compMeasurePreserving (raw R ω₀) (rotate_preserving R ω₀ b),
+    (rotate_preserving R ω₀ b).quasiMeasurePreserving.ae (raw_ae R ω₀), raw_ae R ω₀]
+    with η h1 h2 h3
+  simp only [Function.comp_apply,h1,h2,h3,rawValue,rotate_apply,mul_zero]
+
+instance : CompleteSpace (space (A := E) (representation R ω₀)) :=
+  (isClosed_space (A := E) _).completeSpace_coe
+
+def proj := (space (A := E) (representation R ω₀)).starProjection (raw R ω₀)
+def residual := raw R ω₀ - proj R ω₀
+
+theorem projected_range : ∀ᵐ η ∂measure R ω₀,
+    ((proj R ω₀) η).im = 0 ∧ 0 ≤ ((proj R ω₀) η).re ∧ ((proj R ω₀) η).re ≤ 1 := by
+  apply projection_range (measure R ω₀) (representation R ω₀) (trans R) (trans_preserving R ω₀)
+    (op_apply R ω₀)
+  filter_upwards [raw_ae R ω₀] with η h
+  rw [h]; unfold rawValue; split <;> simp
+
+theorem proj_fixed (b : K) :
+    (rotation R ω₀ b : Hilbert R ω₀ →L[ℂ] Hilbert R ω₀) (proj R ω₀) = proj R ω₀ := by
+  unfold proj
+  exact projection_covariance_fixed (representation R ω₀) (rotation R ω₀ b)
+    (Homeomorph.mulLeft₀ (kCoeff b) (kCoeff_ne_zero b)) (mul_zero _)
+    (rotation_covariance R ω₀ b) _ (raw_fixed R ω₀ b)
+
+theorem residual_correlation {a : E} (ha : a ≠ 0) :
+    ⟪residual R ω₀, op (representation R ω₀) a (residual R ω₀)⟫_ℂ = 0 := by
+  apply residual_fourier (representation R ω₀) (rotation R ω₀) (rotation_covariance R ω₀)
+    (residual R ω₀) ((space (representation R ω₀)).sub_starProjection_mem_orthogonal _)
+    _ a ha
+  intro b; simp [residual,map_sub,raw_fixed,proj_fixed]
+
+theorem residual_orthogonal {a b : E} (h : a ≠ b) :
+    ⟪op (representation R ω₀) a (residual R ω₀),op (representation R ω₀) b (residual R ω₀)⟫_ℂ = 0 := by
+  have eqb : b = a + (b-a) := by abel
+  conv_lhs => rhs; rw [eqb,op_add (A := E) (representation R ω₀) a (b-a) (residual R ω₀)]
+  exact (Unitary.inner_map_map _ _ _).trans (residual_correlation R ω₀ (sub_ne_zero.mpr h.symm))
+
+def field := orbitExtension (representation R ω₀) (proj R ω₀)
+
+theorem field_continuous : Continuous (field R ω₀) :=
+  orbitExtension_continuous _ ((space _).starProjection_apply_mem _)
+
+theorem field_at (a : E) : field R ω₀ (a : ℂ) = op (representation R ω₀) a (proj R ω₀) :=
+  orbitExtension_eq _ ((space _).starProjection_apply_mem _) a
+
+theorem raw_at (a : E) : op (representation R ω₀) a (raw R ω₀) =ᵐ[measure R ω₀]
+    fun η => if η.val a then (1:ℂ) else 0 := by
+  rw [op_apply]
+  filter_upwards [Lp.coeFn_compMeasurePreserving (raw R ω₀) (trans_preserving R ω₀ a),
+    (trans_preserving R ω₀ a).quasiMeasurePreserving.ae (raw_ae R ω₀)] with η h1 h2
+  simp only [h1,Function.comp_apply,h2,rawValue,trans_apply,zero_add]
+
+end
+end C5.Model
+end

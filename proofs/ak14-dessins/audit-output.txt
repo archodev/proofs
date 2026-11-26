@@ -1,0 +1,63 @@
+def AK14.Passport.rows : AK14.Passport → Fin 3 → Multiset ℕ :=
+fun p =>
+  match (motive := AK14.Family → Fin 3 → Multiset ℕ) p.family with
+  | AK14.Family.split =>
+    ![Multiset.replicate p.r 2 + {p.a}, Multiset.replicate p.s 3 + {p.b}, Multiset.replicate p.t 3 + {p.c}]
+  | AK14.Family.together =>
+    ![Multiset.replicate p.r 2 + {p.a}, Multiset.replicate p.s 3, Multiset.replicate p.t 3 + {p.b, p.c}]
+structure AK14.Passport.Admissible (p : AK14.Passport) (n : ℕ) : Prop
+number of parameters: 2
+fields:
+  AK14.Passport.Admissible.a_pos : 0 < p.a
+  AK14.Passport.Admissible.b_pos : 0 < p.b
+  AK14.Passport.Admissible.c_pos : 0 < p.c
+  AK14.Passport.Admissible.a_odd : ¬2 ∣ p.a
+  AK14.Passport.Admissible.b_residue : ¬3 ∣ p.b
+  AK14.Passport.Admissible.c_residue : ¬3 ∣ p.c
+  AK14.Passport.Admissible.totals : ∀ (j : Fin 3), (p.rows j).sum = n
+  AK14.Passport.Admissible.branched : ∀ (j : Fin 3), p.rows j ≠ Multiset.replicate n 1
+  AK14.Passport.Admissible.sphere : (p.rows 0).card + (p.rows 1).card + (p.rows 2).card = n + 2
+constructor:
+  AK14.Passport.Admissible.mk {p : AK14.Passport} {n : ℕ} (a_pos : 0 < p.a) (b_pos : 0 < p.b) (c_pos : 0 < p.c)
+    (a_odd : ¬2 ∣ p.a) (b_residue : ¬3 ∣ p.b) (c_residue : ¬3 ∣ p.c) (totals : ∀ (j : Fin 3), (p.rows j).sum = n)
+    (branched : ∀ (j : Fin 3), p.rows j ≠ Multiset.replicate n 1)
+    (sphere : (p.rows 0).card + (p.rows 1).card + (p.rows 2).card = n + 2) : p.Admissible n
+structure AK14.Realizes {n : ℕ} (p : AK14.Passport) (T : AK14.Triple n) : Prop
+number of parameters: 3
+fields:
+  AK14.Realizes.product : T 0 * T 1 * T 2 = 1
+  AK14.Realizes.transitive : AK14.Transitive T
+  AK14.Realizes.cycles : ∀ (i : Fin 3), AK14.fullType (T i) = p.rows i
+constructor:
+  AK14.Realizes.mk {n : ℕ} {p : AK14.Passport} {T : AK14.Triple n} (product : T 0 * T 1 * T 2 = 1)
+    (transitive : AK14.Transitive T) (cycles : ∀ (i : Fin 3), AK14.fullType (T i) = p.rows i) : AK14.Realizes p T
+def AK14.Transitive : {n : ℕ} → AK14.Triple n → Prop :=
+fun {n} T => ∀ (x y : Fin n), ∃ g ∈ AK14.generated T, g x = y
+def AK14.SameDessin : {n : ℕ} → AK14.Triple n → AK14.Triple n → Prop :=
+fun {n} T U => ∃ q, ∀ (i : Fin 3), U i = q * T i * q⁻¹
+def AK14.OrientedUniqueness : Prop :=
+∀ (p : AK14.Passport) (n : ℕ),
+  p.Admissible n → ∀ (T U : AK14.Triple n), AK14.Realizes p T → AK14.Realizes p U → AK14.SameDessin T U
+def AK14.Theorem13Existence : Prop :=
+∀ (p : AK14.Passport) (n : ℕ), p.Admissible n → ∃ T, AK14.Realizes p T
+def AK14.Conjecture14 : Prop :=
+∀ (p : AK14.Passport) (n : ℕ),
+  p.Admissible n → ∃ T, AK14.Realizes p T ∧ ∀ (U : AK14.Triple n), AK14.Realizes p U → AK14.SameDessin T U
+AK14.oriented_triples_conjugate (p : AK14.Passport) (n : ℕ) (hp : p.Admissible n) (T U : Fin 3 → Equiv.Perm (Fin n))
+  (pT : T 0 * T 1 * T 2 = 1) (tT : AK14.Transitive T) (cT : ∀ (i : Fin 3), AK14.fullType (T i) = p.rows i)
+  (pU : U 0 * U 1 * U 2 = 1) (tU : AK14.Transitive U) (cU : ∀ (i : Fin 3), AK14.fullType (U i) = p.rows i) :
+  ∃ q, ∀ (i : Fin 3), U i = q * T i * q⁻¹
+AK14.tetrahedral_exactly_one (existence : AK14.Theorem13Existence) : AK14.Conjecture14
+'AK14.Gluing.glued_holomorphic_genus_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jacobians.exists_singleSimplePole_of_genus_zero_of_rr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jacobians.degreeOne_bijective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Jacobians.bijective_inverse_contMDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.Gluing.full_glued_uniformization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.Gluing.parameter_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.Gluing.parameter_normalized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.Gluing.parameter_carries' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.SeriesAt.normalized_rational_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.tetrahedral_dessin_uniqueness' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.oriented_triples_conjugate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.exactly_one_for_realized_passport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AK14.tetrahedral_exactly_one' depends on axioms: [propext, Classical.choice, Quot.sound]

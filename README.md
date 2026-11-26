@@ -2,7 +2,7 @@
 
 Lean-checked projects, ordered by the earliest located formulation of each problem. Dates below describe the statement-to-result window through November 2026; they do not establish priority or independent peer review.
 
-This collection counts six projects, including new Lean certificates for the thin-cuboid and 11-cube results that formalize earlier constructions. The count also includes explicit proofs or disproofs of stated questions where no equivalent prior formalization or explicit writeup has been located. A certificate built from a prior construction is identified as such; the count and dates do not claim a global first or establish how long a result remained open.
+This section lists eight Lean-checked projects, including new Lean certificates for the thin-cuboid and 11-cube results that formalize earlier constructions. The count also includes explicit proofs or disproofs of stated questions where no equivalent prior formalization or explicit writeup has been located. A certificate built from a prior construction is identified as such; the count and dates do not claim a global first or establish how long a result remained open.
 
 ## Results, oldest question first
 
@@ -22,11 +22,15 @@ This collection counts six projects, including new Lean certificates for the thi
 
    *Terminal sets from the checked zero labels in the thin-cuboid source. Each slice fixes the third coordinate; filled cells survive the deletion sequence.*
 
-3. **17 Apr 2026 — [Odd edge coloring](proofs/odd-edge-coloring/README.md).** Every finite simple 3-connected graph of odd order and minimum degree at least four has an odd edge coloring with at most three colors.
+3. **17 Dec 2025 — [Same-color five-cycles in the plane](proofs/plane-c5/README.md).** Color the entire plane with two colors in any way. Five points of one color always form a loop of five unit-length edges. The loop need not be a regular pentagon. [Question 3](https://arxiv.org/html/2512.15516v3#S6.SS1), about 11 months to this formalization.
+
+4. **17 Apr 2026 — [Odd edge coloring](proofs/odd-edge-coloring/README.md).** Every finite simple 3-connected graph of odd order and minimum degree at least four has an odd edge coloring with at most three colors.
 
    Kano, Maezawa and Ozeki, [Conjecture 6](https://arxiv.org/html/2604.15824); about 7 months from the April 2026 statement to this team's November 2026 result. The project also checks earlier cases and a form of Tutte's nonseparating cycle theorem.
 
-4. **2 Jul 2026 — [Polygon matching diameter](proofs/polygon-matching-diameter/README.md).** Labelled diameter at most 32g when n = 2g + 1, refuting a uniform joint lower bound.
+5. **8 Jun 2026 — [Uniqueness for two families of tetrahedral dessins](proofs/ak14-dessins/README.md).** In these two families, the specified branching data determine the oriented drawing up to relabeling. Lean checks uniqueness for every degree; existence is a separate result in [the original paper](https://arxiv.org/html/2606.10079#S1.SS4). About 5 months to this formalization.
+
+6. **2 Jul 2026 — [Polygon matching diameter](proofs/polygon-matching-diameter/README.md).** Labelled diameter at most 32g when n = 2g + 1, refuting a uniform joint lower bound.
 
    Gross and Šarković, [Conjecture 2.10](https://arxiv.org/html/2607.02410v1#S2); about 5 months to the November 2026 result. The theorem does not settle every asymptotic regime.
 
@@ -34,7 +38,7 @@ This collection counts six projects, including new Lean certificates for the thi
 
    *An illustrative two-swap path: the first swap keeps 46, the second keeps 13. Each matching has genus one; the theorem covers a broader family.*
 
-5. **14 Nov 2026 — [11- and 16-cube box-free colorings](proofs/boxfree-11/README.md).** The minimum number of monochromatic boxes is zero in both cubes.
+7. **14 Nov 2026 — [11- and 16-cube box-free colorings](proofs/boxfree-11/README.md).** The minimum number of monochromatic boxes is zero in both cubes.
 
    Alm and Miller, [Problem 1](https://arxiv.org/html/2611.19635v1#S8). This adapts [Menezes's earlier construction](https://arxiv.org/html/2609.22381v2#S3); about 12 days from the statement to this team's formalization, not a claim of discovery priority or time open.
 
@@ -42,7 +46,7 @@ This collection counts six projects, including new Lean certificates for the thi
 
    *Two slices of the checked witness; Lean verifies the absence of monochromatic boxes throughout the whole cube.*
 
-6. **14 Nov 2026 — [Exact box-free height for 5 × 7](proofs/boxfree-5x7/README.md).** The largest height is 52, attaining the prior upper bound.
+8. **14 Nov 2026 — [Exact box-free height for 5 × 7](proofs/boxfree-5x7/README.md).** The largest height is 52, attaining the prior upper bound.
 
    Alm and Miller, [Problem 3 and §6](https://arxiv.org/html/2611.19635v1#S8); about 12 days from the statement to this team's November 26 result.
 
@@ -50,7 +54,7 @@ This collection counts six projects, including new Lean certificates for the thi
 
    *Actual layers from the certificate. A same-color rectangle at the same coordinates in two layers would form a forbidden box; no such repetition occurs in the checked stack.*
 
-Future verified releases belong in the list by earliest located formulation, not by publication date. Ordering keys for later projects are unit C5 §6.1 (17 Dec 2025) and dessins Conjecture 1.4 (8 Jun 2026); they enter the list only after their projects are verified and published.
+Results are ordered by their earliest located formulation, not by publication date.
 
 ## Written results, oldest question first
 

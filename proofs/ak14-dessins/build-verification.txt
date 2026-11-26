@@ -1,0 +1,9 @@
+Clean project replay of sh replay.sh with prebuilt pinned dependency objects.
+Lean (version 4.30.0, x86_64-unknown-linux-gnu, commit d024af099ca4bf2c86f649261ebf59565dc8c622, Release)
+Lake version 5.0.0-src+d024af0 (Lean version 4.30.0)
+Pinned Kirov source verified.
+Build completed successfully (4135 jobs).
+13 axiom reports verified. Union: Classical.choice, Quot.sound, propext.
+Checked 10982 declarations in 390 imported AK14 and Kirov modules. All axioms are standard.
+replaying AK14.Uniformization
+replaying AK14.Dessins

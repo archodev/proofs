@@ -1,0 +1,21 @@
+def C5.PlaneMono : (C5.Plane → Bool) → Prop :=
+fun c => ∃ p, Function.Injective p ∧ (∀ (i : Fin 5), dist (p i) (p (i + 1)) = 1) ∧ ∀ (i : Fin 5), c (p i) = c (p 0)
+C5.plane_C5 (c : C5.Plane → Bool) : C5.PlaneMono c
+C5.measurable_plane_C5 (c : C5.Plane → Bool) (h : NullMeasurableSet {x | c x = true} volume) : C5.PlaneMono c
+'C5.plane_C5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.unrestricted_C5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.measurable_plane_C5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.measurable_C5' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.two_circles' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.angular_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.density_transfer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.ae_density' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.measurable_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OAI.PlaneFiveColor.Spectral.finite_wild_fourier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.Model.residual_correlation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.carrier_shapes_dense' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.Model.residual_nonzero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.Model.triangle_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.Model.triangle_classification' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.Model.prism_law' depends on axioms: [propext, Classical.choice, Quot.sound]
+'C5.Model.no_avoiding_law' depends on axioms: [propext, Classical.choice, Quot.sound]

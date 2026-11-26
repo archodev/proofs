@@ -1,0 +1,572 @@
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/DbarDisk.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/DbarDisk.lean
+index e7abac0..d698b10 100644
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/DbarDisk.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/DbarDisk.lean
+@@ -15,7 +15,185 @@
+   whose ∂̄ recovers `g` (Cauchy–Pompeiu).  This file isolates exactly the
+   Mathlib gap on that route; see `dbar_disk_solvable` below.
+ -/
+-import Mathlib
++import Mathlib.Algebra.BigOperators.Finprod
++import Mathlib.Algebra.BigOperators.Group.Finset.Basic
++import Mathlib.Algebra.Category.ModuleCat.Biproducts
++import Mathlib.Algebra.Exact
++import Mathlib.Algebra.Field.GeomSum
++import Mathlib.Algebra.FreeAbelianGroup.Finsupp
++import Mathlib.Algebra.Module.ZLattice.Basic
++import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
++import Mathlib.Analysis.Analytic.Basic
++import Mathlib.Analysis.Analytic.Constructions
++import Mathlib.Analysis.Analytic.IsolatedZeros
++import Mathlib.Analysis.Analytic.OfScalars
++import Mathlib.Analysis.Analytic.Order
++import Mathlib.Analysis.Analytic.Uniqueness
++import Mathlib.Analysis.Calculus.ContDiff.Defs
++import Mathlib.Analysis.Calculus.ContDiff.Operations
++import Mathlib.Analysis.Calculus.Deriv.Add
++import Mathlib.Analysis.Calculus.Deriv.Comp
++import Mathlib.Analysis.Calculus.Deriv.Inv
++import Mathlib.Analysis.Calculus.Deriv.Inverse
++import Mathlib.Analysis.Calculus.Deriv.MeanValue
++import Mathlib.Analysis.Calculus.Deriv.Mul
++import Mathlib.Analysis.Calculus.Deriv.Pow
++import Mathlib.Analysis.Calculus.FDeriv.Add
++import Mathlib.Analysis.Calculus.FDeriv.Analytic
++import Mathlib.Analysis.Calculus.FDeriv.Basic
++import Mathlib.Analysis.Calculus.FDeriv.Comp
++import Mathlib.Analysis.Calculus.FDeriv.Mul
++import Mathlib.Analysis.Calculus.FDeriv.RestrictScalars
++import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Analytic
++import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Deriv
++import Mathlib.Analysis.Calculus.InverseFunctionTheorem.FDeriv
++import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
++import Mathlib.Analysis.Calculus.MeanValue
++import Mathlib.Analysis.Complex.Basic
++import Mathlib.Analysis.Complex.CauchyIntegral
++import Mathlib.Analysis.Complex.HasPrimitives
++import Mathlib.Analysis.Complex.Liouville
++import Mathlib.Analysis.Complex.LocallyUniformLimit
++import Mathlib.Analysis.Complex.OpenMapping
++import Mathlib.Analysis.Complex.OperatorNorm
++import Mathlib.Analysis.Complex.Order
++import Mathlib.Analysis.Complex.Polynomial.Basic
++import Mathlib.Analysis.Complex.RealDeriv
++import Mathlib.Analysis.Complex.RemovableSingularity
++import Mathlib.Analysis.Convex.Contractible
++import Mathlib.Analysis.InnerProductSpace.PiL2
++import Mathlib.Analysis.LocallyConvex.WithSeminorms
++import Mathlib.Analysis.Matrix.PosDef
++import Mathlib.Analysis.Meromorphic.Basic
++import Mathlib.Analysis.Meromorphic.Complex
++import Mathlib.Analysis.Meromorphic.Divisor
++import Mathlib.Analysis.Meromorphic.FactorizedRational
++import Mathlib.Analysis.Meromorphic.NormalForm
++import Mathlib.Analysis.Meromorphic.Order
++import Mathlib.Analysis.Normed.Field.Lemmas
++import Mathlib.Analysis.Normed.Group.Quotient
++import Mathlib.Analysis.Normed.Group.Seminorm
++import Mathlib.Analysis.Normed.Module.Basic
++import Mathlib.Analysis.Normed.Module.Connected
++import Mathlib.Analysis.Normed.Module.FiniteDimension
++import Mathlib.Analysis.Normed.Module.RCLike.Real
++import Mathlib.Analysis.Normed.Module.RieszLemma
++import Mathlib.Analysis.Normed.Operator.Banach
++import Mathlib.Analysis.Normed.Operator.Compact.Basic
++import Mathlib.Analysis.Normed.Operator.Compact.FredholmAlternative
++import Mathlib.Analysis.Normed.Operator.Mul
++import Mathlib.Analysis.RCLike.Basic
++import Mathlib.Analysis.SpecialFunctions.Complex.Analytic
++import Mathlib.Analysis.SpecialFunctions.Complex.Circle
++import Mathlib.Analysis.SpecialFunctions.ExpDeriv
++import Mathlib.Analysis.SpecialFunctions.SmoothTransition
++import Mathlib.Analysis.SpecificLimits.Normed
++import Mathlib.Data.Finset.Card
++import Mathlib.Data.Finsupp.Weight
++import Mathlib.Data.Matrix.ColumnRowPartitioned
++import Mathlib.Data.Set.Card
++import Mathlib.FieldTheory.IsAlgClosed.Basic
++import Mathlib.FieldTheory.Separable
++import Mathlib.Geometry.Manifold.Algebra.LieGroup
++import Mathlib.Geometry.Manifold.Algebra.SmoothFunctions
++import Mathlib.Geometry.Manifold.BumpFunction
++import Mathlib.Geometry.Manifold.ChartedSpace
++import Mathlib.Geometry.Manifold.Complex
++import Mathlib.Geometry.Manifold.ContMDiff.Atlas
++import Mathlib.Geometry.Manifold.ContMDiff.Basic
++import Mathlib.Geometry.Manifold.ContMDiff.Defs
++import Mathlib.Geometry.Manifold.ContMDiff.NormedSpace
++import Mathlib.Geometry.Manifold.ContMDiffMFDeriv
++import Mathlib.Geometry.Manifold.Instances.Sphere
++import Mathlib.Geometry.Manifold.IsManifold.Basic
++import Mathlib.Geometry.Manifold.IsManifold.ExtChartAt
++import Mathlib.Geometry.Manifold.LocalDiffeomorph
++import Mathlib.Geometry.Manifold.MFDeriv.Atlas
++import Mathlib.Geometry.Manifold.MFDeriv.Basic
++import Mathlib.Geometry.Manifold.MFDeriv.Defs
++import Mathlib.Geometry.Manifold.MFDeriv.FDeriv
++import Mathlib.Geometry.Manifold.MFDeriv.NormedSpace
++import Mathlib.Geometry.Manifold.PartitionOfUnity
++import Mathlib.Geometry.Manifold.VectorBundle.ContMDiffSection
++import Mathlib.Geometry.Manifold.VectorBundle.Hom
++import Mathlib.Geometry.Manifold.VectorBundle.Tangent
++import Mathlib.GroupTheory.Perm.Cycle.Concrete
++import Mathlib.LinearAlgebra.Basis.Submodule
++import Mathlib.LinearAlgebra.Complex.FiniteDimensional
++import Mathlib.LinearAlgebra.Complex.Module
++import Mathlib.LinearAlgebra.Dimension.Basic
++import Mathlib.LinearAlgebra.Dimension.Constructions
++import Mathlib.LinearAlgebra.Dimension.Finite
++import Mathlib.LinearAlgebra.Dimension.Finrank
++import Mathlib.LinearAlgebra.Dimension.OrzechProperty
++import Mathlib.LinearAlgebra.Dual.Lemmas
++import Mathlib.LinearAlgebra.FiniteDimensional.Basic
++import Mathlib.LinearAlgebra.FiniteDimensional.Defs
++import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
++import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
++import Mathlib.LinearAlgebra.Matrix.PosDef
++import Mathlib.LinearAlgebra.Matrix.SchurComplement
++import Mathlib.LinearAlgebra.Matrix.ToLinearEquiv
++import Mathlib.MeasureTheory.Function.Jacobian
++import Mathlib.MeasureTheory.Function.JacobianOneDim
++import Mathlib.MeasureTheory.Integral.CurveIntegral.Poincare
++import Mathlib.MeasureTheory.Integral.DivergenceTheorem
++import Mathlib.MeasureTheory.Integral.DominatedConvergence
++import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
++import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
++import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
++import Mathlib.MeasureTheory.Integral.Prod
++import Mathlib.RingTheory.Complex
++import Mathlib.RingTheory.Norm.Transitivity
++import Mathlib.RingTheory.Polynomial.Cyclotomic.Roots
++import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
++import Mathlib.Tactic
++import Mathlib.Tactic.Linarith
++import Mathlib.Tactic.Ring
++import Mathlib.Topology.Algebra.IsUniformGroup.Basic
++import Mathlib.Topology.Algebra.Module.Cardinality
++import Mathlib.Topology.Algebra.Module.LocallyConvex
++import Mathlib.Topology.Compactification.OnePoint.Basic
++import Mathlib.Topology.Compactification.OnePoint.Sphere
++import Mathlib.Topology.Compactness.Compact
++import Mathlib.Topology.Connected.Basic
++import Mathlib.Topology.Connected.Clopen
++import Mathlib.Topology.Connected.LocPathConnected
++import Mathlib.Topology.Connected.PathConnected
++import Mathlib.Topology.Constructions
++import Mathlib.Topology.ContinuousMap.Bounded.ArzelaAscoli
++import Mathlib.Topology.ContinuousMap.Bounded.Basic
++import Mathlib.Topology.ContinuousMap.Compact
++import Mathlib.Topology.ContinuousOn
++import Mathlib.Topology.Covering.Basic
++import Mathlib.Topology.Covering.Quotient
++import Mathlib.Topology.DiscreteSubset
++import Mathlib.Topology.Homotopy.Equiv
++import Mathlib.Topology.Homotopy.Lifting
++import Mathlib.Topology.IsLocalHomeomorph
++import Mathlib.Topology.LocallyConstant.Basic
++import Mathlib.Topology.LocallyFinsupp
++import Mathlib.Topology.Maps.Proper.Basic
++import Mathlib.Topology.MetricSpace.Cover
++import Mathlib.Topology.MetricSpace.Pseudo.Defs
++import Mathlib.Topology.MetricSpace.Pseudo.Lemmas
++import Mathlib.Topology.MetricSpace.Thickening
++import Mathlib.Topology.MetricSpace.UniformConvergence
++import Mathlib.Topology.OpenPartialHomeomorph.Basic
++import Mathlib.Topology.OpenPartialHomeomorph.Constructions
++import Mathlib.Topology.OpenPartialHomeomorph.Continuity
++import Mathlib.Topology.OpenPartialHomeomorph.Defs
++import Mathlib.Topology.Path
++import Mathlib.Topology.Separation.Basic
++import Mathlib.Topology.Separation.Hausdorff
++import Mathlib.Topology.Separation.Regular
++import Mathlib.Topology.ShrinkingLemma
++import Mathlib.Topology.Subpath
++import Mathlib.Topology.UniformSpace.CompleteSeparated
++import Mathlib.Topology.UnitInterval
++import Mathlib.Topology.VectorBundle.Basic
++import Mathlib.Topology.VectorBundle.Constructions
++import Mathlib.Topology.VectorBundle.Hom
+ 
+ open scoped Real Topology ENNReal
+ open Complex MeasureTheory
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarDiskCohomology.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarDiskCohomology.lean
+index d284538..1ebe401 100644
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarDiskCohomology.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarDiskCohomology.lean
+@@ -19,6 +19,7 @@
+   `H¹(disk, 𝒪) = 0`.  The `∂̄ = 0 ⇒ holomorphic` direction is supplied by the Wirtinger
+   characterisation `differentiableAt_complex_iff_differentiableAt_real`.
+ -/
++import Mathlib.Analysis.Complex.Conformal
+ import KirovDolbeault.Dolbeault.DbarLocal
+ 
+ open Complex MeasureTheory Metric
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarLocal.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarLocal.lean
+index 5220f34..b727d2d 100644
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarLocal.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DbarLocal.lean
+@@ -12,7 +12,185 @@
+ 
+   Main result: `DbarLocal.dbar_solvable_locally`.
+ -/
+-import Mathlib
++import Mathlib.Algebra.BigOperators.Finprod
++import Mathlib.Algebra.BigOperators.Group.Finset.Basic
++import Mathlib.Algebra.Category.ModuleCat.Biproducts
++import Mathlib.Algebra.Exact
++import Mathlib.Algebra.Field.GeomSum
++import Mathlib.Algebra.FreeAbelianGroup.Finsupp
++import Mathlib.Algebra.Module.ZLattice.Basic
++import Mathlib.AlgebraicTopology.FundamentalGroupoid.SimplyConnected
++import Mathlib.Analysis.Analytic.Basic
++import Mathlib.Analysis.Analytic.Constructions
++import Mathlib.Analysis.Analytic.IsolatedZeros
++import Mathlib.Analysis.Analytic.OfScalars
++import Mathlib.Analysis.Analytic.Order
++import Mathlib.Analysis.Analytic.Uniqueness
++import Mathlib.Analysis.Calculus.ContDiff.Defs
++import Mathlib.Analysis.Calculus.ContDiff.Operations
++import Mathlib.Analysis.Calculus.Deriv.Add
++import Mathlib.Analysis.Calculus.Deriv.Comp
++import Mathlib.Analysis.Calculus.Deriv.Inv
++import Mathlib.Analysis.Calculus.Deriv.Inverse
++import Mathlib.Analysis.Calculus.Deriv.MeanValue
++import Mathlib.Analysis.Calculus.Deriv.Mul
++import Mathlib.Analysis.Calculus.Deriv.Pow
++import Mathlib.Analysis.Calculus.FDeriv.Add
++import Mathlib.Analysis.Calculus.FDeriv.Analytic
++import Mathlib.Analysis.Calculus.FDeriv.Basic
++import Mathlib.Analysis.Calculus.FDeriv.Comp
++import Mathlib.Analysis.Calculus.FDeriv.Mul
++import Mathlib.Analysis.Calculus.FDeriv.RestrictScalars
++import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Analytic
++import Mathlib.Analysis.Calculus.InverseFunctionTheorem.Deriv
++import Mathlib.Analysis.Calculus.InverseFunctionTheorem.FDeriv
++import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
++import Mathlib.Analysis.Calculus.MeanValue
++import Mathlib.Analysis.Complex.Basic
++import Mathlib.Analysis.Complex.CauchyIntegral
++import Mathlib.Analysis.Complex.HasPrimitives
++import Mathlib.Analysis.Complex.Liouville
++import Mathlib.Analysis.Complex.LocallyUniformLimit
++import Mathlib.Analysis.Complex.OpenMapping
++import Mathlib.Analysis.Complex.OperatorNorm
++import Mathlib.Analysis.Complex.Order
++import Mathlib.Analysis.Complex.Polynomial.Basic
++import Mathlib.Analysis.Complex.RealDeriv
++import Mathlib.Analysis.Complex.RemovableSingularity
++import Mathlib.Analysis.Convex.Contractible
++import Mathlib.Analysis.InnerProductSpace.PiL2
++import Mathlib.Analysis.LocallyConvex.WithSeminorms
++import Mathlib.Analysis.Matrix.PosDef
++import Mathlib.Analysis.Meromorphic.Basic
++import Mathlib.Analysis.Meromorphic.Complex
++import Mathlib.Analysis.Meromorphic.Divisor
++import Mathlib.Analysis.Meromorphic.FactorizedRational
++import Mathlib.Analysis.Meromorphic.NormalForm
++import Mathlib.Analysis.Meromorphic.Order
++import Mathlib.Analysis.Normed.Field.Lemmas
++import Mathlib.Analysis.Normed.Group.Quotient
++import Mathlib.Analysis.Normed.Group.Seminorm
++import Mathlib.Analysis.Normed.Module.Basic
++import Mathlib.Analysis.Normed.Module.Connected
++import Mathlib.Analysis.Normed.Module.FiniteDimension
++import Mathlib.Analysis.Normed.Module.RCLike.Real
++import Mathlib.Analysis.Normed.Module.RieszLemma
++import Mathlib.Analysis.Normed.Operator.Banach
++import Mathlib.Analysis.Normed.Operator.Compact.Basic
++import Mathlib.Analysis.Normed.Operator.Compact.FredholmAlternative
++import Mathlib.Analysis.Normed.Operator.Mul
++import Mathlib.Analysis.RCLike.Basic
++import Mathlib.Analysis.SpecialFunctions.Complex.Analytic
++import Mathlib.Analysis.SpecialFunctions.Complex.Circle
++import Mathlib.Analysis.SpecialFunctions.ExpDeriv
++import Mathlib.Analysis.SpecialFunctions.SmoothTransition
++import Mathlib.Analysis.SpecificLimits.Normed
++import Mathlib.Data.Finset.Card
++import Mathlib.Data.Finsupp.Weight
++import Mathlib.Data.Matrix.ColumnRowPartitioned
++import Mathlib.Data.Set.Card
++import Mathlib.FieldTheory.IsAlgClosed.Basic
++import Mathlib.FieldTheory.Separable
++import Mathlib.Geometry.Manifold.Algebra.LieGroup
++import Mathlib.Geometry.Manifold.Algebra.SmoothFunctions
++import Mathlib.Geometry.Manifold.BumpFunction
++import Mathlib.Geometry.Manifold.ChartedSpace
++import Mathlib.Geometry.Manifold.Complex
++import Mathlib.Geometry.Manifold.ContMDiff.Atlas
++import Mathlib.Geometry.Manifold.ContMDiff.Basic
++import Mathlib.Geometry.Manifold.ContMDiff.Defs
++import Mathlib.Geometry.Manifold.ContMDiff.NormedSpace
++import Mathlib.Geometry.Manifold.ContMDiffMFDeriv
++import Mathlib.Geometry.Manifold.Instances.Sphere
++import Mathlib.Geometry.Manifold.IsManifold.Basic
++import Mathlib.Geometry.Manifold.IsManifold.ExtChartAt
++import Mathlib.Geometry.Manifold.LocalDiffeomorph
++import Mathlib.Geometry.Manifold.MFDeriv.Atlas
++import Mathlib.Geometry.Manifold.MFDeriv.Basic
++import Mathlib.Geometry.Manifold.MFDeriv.Defs
++import Mathlib.Geometry.Manifold.MFDeriv.FDeriv
++import Mathlib.Geometry.Manifold.MFDeriv.NormedSpace
++import Mathlib.Geometry.Manifold.PartitionOfUnity
++import Mathlib.Geometry.Manifold.VectorBundle.ContMDiffSection
++import Mathlib.Geometry.Manifold.VectorBundle.Hom
++import Mathlib.Geometry.Manifold.VectorBundle.Tangent
++import Mathlib.GroupTheory.Perm.Cycle.Concrete
++import Mathlib.LinearAlgebra.Basis.Submodule
++import Mathlib.LinearAlgebra.Complex.FiniteDimensional
++import Mathlib.LinearAlgebra.Complex.Module
++import Mathlib.LinearAlgebra.Dimension.Basic
++import Mathlib.LinearAlgebra.Dimension.Constructions
++import Mathlib.LinearAlgebra.Dimension.Finite
++import Mathlib.LinearAlgebra.Dimension.Finrank
++import Mathlib.LinearAlgebra.Dimension.OrzechProperty
++import Mathlib.LinearAlgebra.Dual.Lemmas
++import Mathlib.LinearAlgebra.FiniteDimensional.Basic
++import Mathlib.LinearAlgebra.FiniteDimensional.Defs
++import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
++import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
++import Mathlib.LinearAlgebra.Matrix.PosDef
++import Mathlib.LinearAlgebra.Matrix.SchurComplement
++import Mathlib.LinearAlgebra.Matrix.ToLinearEquiv
++import Mathlib.MeasureTheory.Function.Jacobian
++import Mathlib.MeasureTheory.Function.JacobianOneDim
++import Mathlib.MeasureTheory.Integral.CurveIntegral.Poincare
++import Mathlib.MeasureTheory.Integral.DivergenceTheorem
++import Mathlib.MeasureTheory.Integral.DominatedConvergence
++import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
++import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
++import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
++import Mathlib.MeasureTheory.Integral.Prod
++import Mathlib.RingTheory.Complex
++import Mathlib.RingTheory.Norm.Transitivity
++import Mathlib.RingTheory.Polynomial.Cyclotomic.Roots
++import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
++import Mathlib.Tactic
++import Mathlib.Tactic.Linarith
++import Mathlib.Tactic.Ring
++import Mathlib.Topology.Algebra.IsUniformGroup.Basic
++import Mathlib.Topology.Algebra.Module.Cardinality
++import Mathlib.Topology.Algebra.Module.LocallyConvex
++import Mathlib.Topology.Compactification.OnePoint.Basic
++import Mathlib.Topology.Compactification.OnePoint.Sphere
++import Mathlib.Topology.Compactness.Compact
++import Mathlib.Topology.Connected.Basic
++import Mathlib.Topology.Connected.Clopen
++import Mathlib.Topology.Connected.LocPathConnected
++import Mathlib.Topology.Connected.PathConnected
++import Mathlib.Topology.Constructions
++import Mathlib.Topology.ContinuousMap.Bounded.ArzelaAscoli
++import Mathlib.Topology.ContinuousMap.Bounded.Basic
++import Mathlib.Topology.ContinuousMap.Compact
++import Mathlib.Topology.ContinuousOn
++import Mathlib.Topology.Covering.Basic
++import Mathlib.Topology.Covering.Quotient
++import Mathlib.Topology.DiscreteSubset
++import Mathlib.Topology.Homotopy.Equiv
++import Mathlib.Topology.Homotopy.Lifting
++import Mathlib.Topology.IsLocalHomeomorph
++import Mathlib.Topology.LocallyConstant.Basic
++import Mathlib.Topology.LocallyFinsupp
++import Mathlib.Topology.Maps.Proper.Basic
++import Mathlib.Topology.MetricSpace.Cover
++import Mathlib.Topology.MetricSpace.Pseudo.Defs
++import Mathlib.Topology.MetricSpace.Pseudo.Lemmas
++import Mathlib.Topology.MetricSpace.Thickening
++import Mathlib.Topology.MetricSpace.UniformConvergence
++import Mathlib.Topology.OpenPartialHomeomorph.Basic
++import Mathlib.Topology.OpenPartialHomeomorph.Constructions
++import Mathlib.Topology.OpenPartialHomeomorph.Continuity
++import Mathlib.Topology.OpenPartialHomeomorph.Defs
++import Mathlib.Topology.Path
++import Mathlib.Topology.Separation.Basic
++import Mathlib.Topology.Separation.Hausdorff
++import Mathlib.Topology.Separation.Regular
++import Mathlib.Topology.ShrinkingLemma
++import Mathlib.Topology.Subpath
++import Mathlib.Topology.UniformSpace.CompleteSeparated
++import Mathlib.Topology.UnitInterval
++import Mathlib.Topology.VectorBundle.Basic
++import Mathlib.Topology.VectorBundle.Constructions
++import Mathlib.Topology.VectorBundle.Hom
+ import KirovDolbeault.DbarDisk
+ 
+ open Complex MeasureTheory
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DolbeaultComparisonProof.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DolbeaultComparisonProof.lean
+index 3615985..7c02013 100644
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DolbeaultComparisonProof.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/DolbeaultComparisonProof.lean
+@@ -30,6 +30,7 @@
+   `ℝ`-linear equivalence `comparison_linearEquiv`, the target `cechH1_dolbeault_comparison_proof`, and
+   the closing honest-status summary live in `Jacobians.Dolbeault.DolbeaultComparisonInverse`.
+ -/
++import Mathlib.Analysis.Complex.Conformal
+ import KirovDolbeault.Dolbeault.DolbeaultComparison
+ import KirovDolbeault.Dolbeault.DbarLocal
+ import KirovDolbeault.Dolbeault.ChartDiskCover
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/SerreResidueRamifiedNormalForm.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/SerreResidueRamifiedNormalForm.lean
+index 4b1cedf..cfdc3d4 100644
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/SerreResidueRamifiedNormalForm.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/Dolbeault/SerreResidueRamifiedNormalForm.lean
+@@ -3,6 +3,7 @@ Copyright (c) 2026 Rado Kirov. All rights reserved.
+ Released under Apache 2.0 license as described in the file LICENSE.
+ Authors: Rado Kirov
+ -/
++import Mathlib.Topology.DerivedSet
+ import KirovDolbeault.Dolbeault.SerreResidueRamifiedCenter
+ import KirovDolbeault.Dolbeault.FormTracePrincipalPart
+ 
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/Abel.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/Abel.lean
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/Abel.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/Abel.lean
+@@ -654,21 +654,6 @@
+ with Abel, implies `abelJacobi (P - Q) ≠ 0`, the lemma needed for
+ `ofCurve_inj`. -/
+ 
+-variable {X} in
+-/-- **Consequence of Abel's theorem + non-existence of degree-1 maps
+-to ℙ¹ on positive-kirovGenus surfaces**: the Abel–Jacobi image of a
+-two-point divisor `P - Q` is nonzero when `P ≠ Q` on a surface of
+-positive kirovGenus.
+-
+-Classical argument: if `abelJacobi (P - Q) = 0`, then by Abel's theorem
+-`P - Q` is principal — some meromorphic function `f` has a simple zero
+-at `P` and a simple pole at `Q` and no other zeros/poles. Such an `f`
+-is a degree-1 map `X → ℙ¹`, hence a biholomorphism (Riemann-Hurwitz).
+-But then `X ≃ ℙ¹`, which has kirovGenus 0 — contradiction. -/
+-theorem abelJacobi_twoPoint_ne_zero
+-    (h : 0 < kirovGenus X) {P Q : X} (hPQ : P ≠ Q) :
+-    abelJacobi ⟨twoPointDivisor X P Q, twoPointDivisor_mem_degZero X P Q⟩ ≠ 0 :=
+-  sorry
+ 
+ /-! ### `no_distinct_points_placeholder` removed
+ 
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/CutSurfaceRelations.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/CutSurfaceRelations.lean
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/CutSurfaceRelations.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/CutSurfaceRelations.lean
+@@ -147,26 +147,5 @@
+ 
+ end CutSurface
+ 
+-/-- **[ISOLATED INPUT — chart existence only]** Every compact connected Riemann surface admits a cut
+-surface: a canonical dissection realized as a cut chart with the boundary-word data. This bundles
+-exactly the surface-topology + polygon-Green content Mathlib lacks — the Radó triangulation, the
+-classification of surfaces (`H₁(X;ℤ) ≅ ℤ^{2g}` + the canonical `4g`-gon), the holomorphic cut chart,
+-and Green's theorem on the `4g`-gon (which turns `∮_{∂box}` into the period sums of the two boundary
+-words). **Everything analytic downstream — both Riemann bilinear relations — is proven**
+-(`CutSurface.cutSurface_R1`, `CutSurface.cutSurface_R2`). (Forster §§20–21; Griffiths–Harris
+-pp. 231–232; Springer pp. 139–141.) -/
+-theorem exists_cutSurface (X : Type*) [TopologicalSpace X] [T2Space X] [CompactSpace X]
+-    [ConnectedSpace X] [Nonempty X] [ChartedSpace ℂ X] [IsManifold 𝓘(ℂ) ω X] :
+-    Nonempty (CutSurface X) :=
+-  sorry
+-
+-/-- **Every compact connected Riemann surface admits a canonical dissection** — *derived* from
+-`exists_cutSurface` with the two Riemann bilinear relations as the proven theorems
+-`CutSurface.cutSurface_R1` / `CutSurface.cutSurface_R2`. (This replaces the former raw obligation: the
+-relations are no longer bundled; only the chart existence is isolated.) -/
+-theorem exists_canonicalDissection (X : Type*) [TopologicalSpace X] [T2Space X] [CompactSpace X]
+-    [ConnectedSpace X] [Nonempty X] [ChartedSpace ℂ X] [IsManifold 𝓘(ℂ) ω X] :
+-    Nonempty (CanonicalDissection X) :=
+-  (exists_cutSurface X).map CutSurface.toCanonicalDissection
+ 
+ end Jacobians
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/PeriodLattice.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/PeriodLattice.lean
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/PeriodLattice.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/PeriodLattice.lean
+@@ -836,42 +836,6 @@
+   -- Goal: ∑ i, v i * lineIntegral (periodBasisForm X i) γ = ∑ i, v i * (periodVec γ) i
+   rfl
+ 
+-/-- **Existence of a period ℝ-basis** — the *single* classical input behind the
+-Jacobian-as-complex-torus structure (the Riemann bilinear relations, Forster §§20–21).
+-It states the period lattice is generated, as a `ℤ`-module, by a **real basis** of
+-`ℂ^(kirovGenus X) ≅ ℝ^(2·kirovGenus X)`: the `2g` periods of a symplectic homology basis are
+-`ℝ`-linearly independent and `ℤ`-generate the lattice.
+-
+-From this, **both** the discreteness and the full-rank-`ℤ`-lattice instances below are
+-*mechanical* — they are Mathlib's `ZSpan.instDiscreteTopology` / `instIsZLatticeRealSpan`
+-for the `ℤ`-span of a real basis, transported across the lattice equality. So this is the
+-only remaining classical content; everything downstream is unconditional given it.
+-
+-**Now PROVEN modulo the two-pillar scaffold** (`Jacobians/Dissection.lean`): the *assembly*
+-`realBasis_of_canonicalDissection` is unconditional; the remaining inputs are
+-`exists_canonicalDissection` (the isolated surface-topology pillar — `H₁(X;ℤ) ≅ ℤ^{2g}` + the
+-canonical dissection + period homology-invariance) and `periodVec_linearIndependent` (the analytic
+-pillar — the Riemann bilinear relations, to be built via cut-surface + Green's theorem). -/
+-theorem exists_periodLattice_realBasis :
+-    ∃ b : Module.Basis (Fin (2 * kirovGenus X)) ℝ (Fin (kirovGenus X) → ℂ),
+-      truePeriodLattice X = Submodule.span ℤ (Set.range ⇑b) := by
+-  obtain ⟨D⟩ := exists_canonicalDissection X
+-  obtain ⟨b, hb⟩ := realBasis_of_canonicalDissection D
+-  exact ⟨b, by rw [truePeriodLattice]; exact hb⟩
+-
+-/-- **Discrete topology on the period lattice.** Mechanical from
+-`exists_periodLattice_realBasis`: a `ℤ`-span of a real basis is discrete
+-(`ZSpan.instDiscreteTopology`). -/
+-instance : DiscreteTopology (truePeriodLattice X) := by
+-  obtain ⟨b, hb⟩ := exists_periodLattice_realBasis (X := X)
+-  rw [hb]; infer_instance
+-
+-/-- **Period lattice is a `ℤ`-lattice of full real rank** `2 * kirovGenus X` in
+-`ℂ^(kirovGenus X) = ℝ^(2g)`. Mechanical from `exists_periodLattice_realBasis`: a `ℤ`-span
+-of a real basis is a full-rank `ℤ`-lattice (`instIsZLatticeRealSpan`). -/
+-instance : IsZLattice ℝ (truePeriodLattice X) := by
+-  obtain ⟨b, hb⟩ := exists_periodLattice_realBasis (X := X)
+-  exact { span_top := by rw [hb]; exact (instIsZLatticeRealSpan b).span_top }
+ 
+ /-! ### Phase 4a: `ambientPhi` preserves the period lattice
+ 
+diff --git a/vendor/kirov-dolbeault-port/KirovDolbeault/DegreeOneSphere.lean b/vendor/kirov-dolbeault-port/KirovDolbeault/DegreeOneSphere.lean
+--- a/vendor/kirov-dolbeault-port/KirovDolbeault/DegreeOneSphere.lean
++++ b/vendor/kirov-dolbeault-port/KirovDolbeault/DegreeOneSphere.lean
+@@ -655,49 +655,3 @@
+   exact ⟨e.trans RiemannSphere.homeoSphere⟩
+ 
+ end Jacobians
+-
+-/-! ### The challenge theorem `genus_eq_zero_iff_homeo`
+-
+-Declared in the **root namespace** (matching `kirovGenus`, which lives in root namespace in `Genus.lean`),
+-so the challenge-conformance file resolves the bare name. Lives in this module — not `Genus.lean` —
+-because its forward direction needs the degree-one endgame, which sits downstream of `Genus` (via
+-`ProjectiveLine → Genus`); declaring it here breaks the import cycle. Both directions rest on isolated
+-analytic inputs (the unproved obligations below). `Nonempty X` is supplied for free by `[ConnectedSpace X]`
+-(`ConnectedSpace.toNonempty`), so the signature matches the spec exactly. -/
+-
+-open scoped Manifold ContDiff in
+-/-- **[INPUT — the de Rham wall, the backward half].** A surface homeomorphic to `S²` has kirovGenus `0`.
+-
+-`kirovGenus X = Module.finrank ℂ (HolomorphicOneForms X)` is **analytic**, while `X ≃ₜ S²` is purely
+-**topological**, so the bridge is the contrapositive route (`Jacobians.GenusSphereBackward`):
+-`X ≃ₜ S²` makes `X` simply connected, on which every holomorphic `1`-form has a global primitive,
+-hence (being constant on compact `X`, Liouville) vanishes, so `kirovGenus X = 0`.
+-
+-Two of the route's three former walls have fallen and are discharged here completely:
+-* **`S²` simply connected** — unconditional (`Jacobians.VanKampen.twoOpenVanKampen_holds`); `X ≃ₜ S²`
+-  transports `SimplyConnectedSpace` to `X`.
+-* **Liouville / max-modulus** — `MDifferentiable.exists_eq_const_of_compactSpace` (Mathlib).
+-
+-The *only* remaining input is the **holomorphic Poincaré lemma / monodromy theorem**
+-`Jacobians.HasHolomorphicPrimitives X` (every holomorphic `1`-form on a simply connected surface has
+-a global primitive); Mathlib has only the plane/ball version, the manifold de Rham globalisation is
+-the open gap. The whole route, *modulo that single input*, is assembled axiom-clean in
+-`Jacobians.genus_zero_of_nonempty_homeo_sphere_of_hasPrimitives`; the one remaining gap below is exactly
+-`HasHolomorphicPrimitives X`.
+-
+-**Scope of the remaining sorry (E6 reroute, 2026-06-10).** This bare-homeomorphism statement
+-is now needed *only* for the backward half of the conformance headline `genus_eq_zero_iff_homeo`
+-(`KirovDolbeault.GenusSphereHeadline`). Wherever the homeomorphism arises from the degree-one
+-chain itself — i.e. from a single simple pole, as in the Abel-wall genus obstruction — the
+-genus-0 conclusion is available **without** this sorry via the biholomorphic genus transport
+-`Jacobians.genus_zero_of_singleSimplePole` (`KirovDolbeault.DegreeOneGenusTransport`,
+-axiom-clean, keystone- and de-Rham-free). The transport cannot replace THIS statement: a bare
+-`X ≃ₜ S²` carries no complex structure, so no holomorphic degree-1 map is available to pull
+-forms back along; closing this sorry as stated genuinely requires the de Rham input (or
+-uniformization). See `docs/planning/E6_BLOCKER.md` in the parent repository. -/
+-theorem genus_zero_of_nonempty_homeo_sphere {X : Type*} [TopologicalSpace X] [T2Space X]
+-    [CompactSpace X] [ConnectedSpace X] [ChartedSpace ℂ X] [IsManifold 𝓘(ℂ) ω X]
+-    (h : Nonempty (X ≃ₜ Metric.sphere (0 : EuclideanSpace ℝ (Fin 3)) 1)) :
+-    kirovGenus X = 0 :=
+-  Jacobians.genus_zero_of_nonempty_homeo_sphere_of_hasPrimitives
+-    (sorry : Jacobians.HasHolomorphicPrimitives X) h
