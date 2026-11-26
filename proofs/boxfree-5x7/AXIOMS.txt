@@ -1,0 +1,8 @@
+'Box57.witness_boxFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Box57.same_cells' depends on axioms: [propext, Quot.sound]
+'Box57.masks_boxFree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Box57.height_le' depends on axioms: [propext, Quot.sound]
+'Box57.no_coloring_above' depends on axioms: [propext, Quot.sound]
+'Box57.restrict_boxFree' does not depend on any axioms
+'Box57.colorable_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Box57.exact_52' depends on axioms: [propext, Classical.choice, Quot.sound]
