@@ -1,0 +1,6 @@
+name = "kmo"
+version = "1.0.0"
+defaultTargets = ["KMO"]
+
+[[lean_lib]]
+name = "KMO"
