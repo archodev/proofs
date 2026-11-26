@@ -6,11 +6,11 @@ The two lists are oldest first. The ages run from the earliest formulation we lo
 
 ## Lean-checked results
 
-1. **1992 · [Finite triangle-free networks with a fresh witness](proofs/finite-ectf/README.md).** Pick a size limit. A finite triangle-free network can be built so that every small request for a new node to connect to one group and avoid another is met, as long as the group it connects to contains no links. The theorem works for every size limit. [Cherlin, Problems 8–9](https://sites.math.rutgers.edu/~cherlin/Paper/1992CombProblems.pdf), about 34 years. Lean checks the finite graph claim; Henson pseudofiniteness follows by a known equivalence.
+1. **1992 · [Cherlin’s triangle-free graph problem](proofs/finite-ectf/README.md).** Pick a size limit. A finite triangle-free network can be built so that every small request for a new node to connect to one group and avoid another is met, as long as the group it connects to contains no links. The theorem works for every size limit. [Cherlin, Problems 8–9](https://sites.math.rutgers.edu/~cherlin/Paper/1992CombProblems.pdf), about 34 years. Lean checks the finite graph claim; Henson pseudofiniteness follows by a known equivalence.
 
    ![Vertex 6 joins vertices 1 and 3 but avoids 2 and 4.](assets/illustrations/finite-ectf.svg)
 
-   *A single extension request, not a whole graph with the extension property.*
+   *The drawing shows one request. The [2026 Barbados workshop, Problem 29](https://web.math.princeton.edu/~pds/barbados26/problems.pdf#page=11) reported no finite example even for four-point requests. The Lean theorem works for every size limit.*
 
 2. **2012 · [Two thin-cuboid counterexamples](proofs/thin-cuboid/README.md).** Remove a cube only when it touches exactly three remaining cubes by a face. These two dismantlings leave 17 isolated cubes in a 2 × 3 × 9 block and 15 in a 3 × 3 × 6 block, refuting two clauses of [Barát and Wanless’s conjecture](https://arxiv.org/html/2603.23913#S6). The [earlier constructions](https://arxiv.org/abs/2209.07594) are newly checked in Lean here, about 14 years after the stated problem.
 
