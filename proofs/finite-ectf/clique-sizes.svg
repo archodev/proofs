@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="258" viewBox="0 0 840 258" role="img" aria-labelledby="title desc">
+<title id="title">Finite approximations for every forbidden clique size</title>
+<desc id="desc">Fully joined groups of size three, four and five illustrate the cliques one can choose to forbid. For every chosen size r at least three and each bounded request size, the construction gives a finite graph with the corresponding extension property.</desc>
+<rect width="840" height="258" rx="16" fill="#faf7f0"/>
+<g font-family="Helvetica, Arial, sans-serif" fill="#192931">
+<text x="30" y="39" font-size="25" font-weight="700">Pick a clique size to forbid</text>
+<rect x="42" y="57" width="178" height="133" rx="12" fill="#fffdfa" stroke="#d8d4c9"/>
+<line x1="131.000" y1="73.000" x2="164.775" y2="131.500" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="131.000" y1="73.000" x2="97.225" y2="131.500" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="164.775" y1="131.500" x2="97.225" y2="131.500" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<circle cx="131.000" cy="73.000" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="164.775" cy="131.500" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="97.225" cy="131.500" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<text x="131" y="172" text-anchor="middle" font-size="16" font-weight="700">No 3-clique</text>
+<rect x="241" y="57" width="178" height="133" rx="12" fill="#fffdfa" stroke="#d8d4c9"/>
+<line x1="330.000" y1="73.000" x2="369.000" y2="112.000" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="330.000" y1="73.000" x2="330.000" y2="151.000" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="330.000" y1="73.000" x2="291.000" y2="112.000" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="369.000" y1="112.000" x2="330.000" y2="151.000" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="369.000" y1="112.000" x2="291.000" y2="112.000" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="330.000" y1="151.000" x2="291.000" y2="112.000" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<circle cx="330.000" cy="73.000" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="369.000" cy="112.000" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="330.000" cy="151.000" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="291.000" cy="112.000" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<text x="330" y="172" text-anchor="middle" font-size="16" font-weight="700">No 4-clique</text>
+<rect x="440" y="57" width="178" height="133" rx="12" fill="#fffdfa" stroke="#d8d4c9"/>
+<line x1="529.000" y1="73.000" x2="566.091" y2="99.948" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="529.000" y1="73.000" x2="551.924" y2="143.552" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="529.000" y1="73.000" x2="506.076" y2="143.552" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="529.000" y1="73.000" x2="491.909" y2="99.948" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="566.091" y1="99.948" x2="551.924" y2="143.552" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="566.091" y1="99.948" x2="506.076" y2="143.552" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="566.091" y1="99.948" x2="491.909" y2="99.948" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="551.924" y1="143.552" x2="506.076" y2="143.552" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="551.924" y1="143.552" x2="491.909" y2="99.948" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<line x1="506.076" y1="143.552" x2="491.909" y2="99.948" stroke="#a54629" stroke-width="2.8" stroke-linecap="round"/>
+<circle cx="529.000" cy="73.000" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="566.091" cy="99.948" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="551.924" cy="143.552" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="506.076" cy="143.552" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<circle cx="491.909" cy="99.948" r="5" fill="#a54629" stroke="#fffdfa" stroke-width="1.4"/>
+<text x="529" y="172" text-anchor="middle" font-size="16" font-weight="700">No 5-clique</text>
+<circle cx="676" cy="113" r="3" fill="#52636a"/>
+<circle cx="695" cy="113" r="3" fill="#52636a"/>
+<circle cx="714" cy="113" r="3" fill="#52636a"/>
+<text x="697" y="145" text-anchor="middle" fill="#52636a" font-size="15">Any larger size</text>
+<rect x="24" y="205" width="792" height="38" rx="9" fill="#e6efee"/>
+<text x="420" y="230" text-anchor="middle" font-weight="700" fill="#176d68" font-size="18">Every size works. One finite graph per request limit.</text>
+</g></svg>

@@ -2,6 +2,10 @@
 
 For each natural number k, Problem29.finite_ectf supplies a finite simple triangle-free graph with the following extension property. Given disjoint vertex sets A and B of total size at most k, if A is independent, there is a vertex outside both sets adjacent to every member of A and to no member of B. Problem29.finite_4ectf specializes this single result to k = 4.
 
+## Extension to every forbidden clique size
+
+The [all-clique-sizes extension](HENSON.md) and its first-order consequence are also formalized. The original triangle-free file below is unchanged.
+
 ## Replay
 
 From the repository root, with Elan and Git available, run

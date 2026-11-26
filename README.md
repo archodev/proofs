@@ -14,7 +14,7 @@ These proofs or disproofs resolve the stated claim or case. Earlier ingredients 
 
    *Every equal-LCM pair at this length overlaps.*
 
-2. **1992 · [Cherlin’s Triangle-Free Extension Problem](proofs/finite-ectf/README.md).** **Proven** (finite graph statement). Pick a size limit. A finite triangle-free network can be built so that every small request for a new node to connect to one group and avoid another is met, as long as the group it connects to contains no links. The theorem works for every size limit. [Cherlin, Problems 8–9](https://sites.math.rutgers.edu/~cherlin/Paper/1992CombProblems.pdf), about 34 years. Lean checks the finite graph claim; Henson pseudofiniteness follows by a known equivalence.
+2. **1992 · [Cherlin’s Triangle-Free Extension Problem](proofs/finite-ectf/README.md).** **Proven** (finite graph statement). Pick a size limit. A finite triangle-free network can be built so that every small request for a new node to connect to one group and avoid another is met, as long as the group it connects to contains no links. The theorem works for every size limit. [Cherlin, Problems 8–9](https://sites.math.rutgers.edu/~cherlin/Paper/1992CombProblems.pdf), about 34 years. The [Lean-checked extension](proofs/finite-ectf/HENSON.md) works for every forbidden clique size, not just triangles, and proves that every Henson graph is pseudofinite: each first-order sentence true in it also holds in some finite graph.
 
    *Formalized in Lean.*
 

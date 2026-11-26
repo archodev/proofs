@@ -1,6 +1,6 @@
 name = "problem29"
 version = "1.0.0"
-defaultTargets = ["Problem29"]
+defaultTargets = ["Problem29", "HensonLogic"]
 
 [[require]]
 name = "mathlib"
@@ -9,3 +9,9 @@ rev = "c44e0c8ee63ca166450922a373c7409c5d26b00b"
 
 [[lean_lib]]
 name = "Problem29"
+
+[[lean_lib]]
+name = "HensonAll"
+
+[[lean_lib]]
+name = "HensonLogic"
