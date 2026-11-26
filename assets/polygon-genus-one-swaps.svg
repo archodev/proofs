@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 350" role="img" aria-labelledby="title desc"><title id="title">Two genus-preserving chord swaps</title><desc id="desc">Three labelled hexagons show matchings 12 35 46, then 13 25 46, then 13 24 56. The first swap keeps chord 46; the second keeps chord 13. Each matching has two vertex cycles and genus one.</desc><rect width="960" height="350" rx="18" fill="#f4f7fb"/>
+<text x="30" y="38" font-family="sans-serif" font-size="22" font-weight="700" fill="#172b49">Two genus-one chord swaps</text>
+<polygon points="155.00,80.00 245.93,132.50 245.93,237.50 155.00,290.00 64.07,237.50 64.07,132.50" fill="#ffffff" stroke="#405874" stroke-width="2"/>
+<line data-pair="12" x1="200.47" y1="106.25" x2="245.93" y2="185.00" stroke="#176a8a" stroke-width="4"/>
+<line data-pair="35" x1="200.47" y1="263.75" x2="64.07" y2="185.00" stroke="#a3472e" stroke-width="4"/>
+<line data-pair="46" x1="109.53" y1="263.75" x2="109.53" y2="106.25" stroke="#7c4996" stroke-width="4"/>
+<circle cx="200.47" cy="106.25" r="4" fill="#172b49"/><text x="211.38" y="92.35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">1</text>
+<circle cx="245.93" cy="185.00" r="4" fill="#172b49"/><text x="267.76" y="190.00" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">2</text>
+<circle cx="200.47" cy="263.75" r="4" fill="#172b49"/><text x="211.38" y="287.65" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">3</text>
+<circle cx="109.53" cy="263.75" r="4" fill="#172b49"/><text x="98.62" y="287.65" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">4</text>
+<circle cx="64.07" cy="185.00" r="4" fill="#172b49"/><text x="42.24" y="190.00" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">5</text>
+<circle cx="109.53" cy="106.25" r="4" fill="#172b49"/><text x="98.62" y="92.35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">6</text>
+<text x="65" y="325" font-family="sans-serif" font-size="17" font-weight="700" fill="#172b49">12 · 35 · 46</text>
+<text x="297" y="191" font-family="sans-serif" font-size="25" fill="#354d69">→</text>
+<polygon points="475.00,80.00 565.93,132.50 565.93,237.50 475.00,290.00 384.07,237.50 384.07,132.50" fill="#ffffff" stroke="#405874" stroke-width="2"/>
+<line data-pair="13" x1="520.47" y1="106.25" x2="520.47" y2="263.75" stroke="#176a8a" stroke-width="4"/>
+<line data-pair="25" x1="565.93" y1="185.00" x2="384.07" y2="185.00" stroke="#a3472e" stroke-width="4"/>
+<line data-pair="46" x1="429.53" y1="263.75" x2="429.53" y2="106.25" stroke="#7c4996" stroke-width="4"/>
+<circle cx="520.47" cy="106.25" r="4" fill="#172b49"/><text x="531.38" y="92.35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">1</text>
+<circle cx="565.93" cy="185.00" r="4" fill="#172b49"/><text x="587.76" y="190.00" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">2</text>
+<circle cx="520.47" cy="263.75" r="4" fill="#172b49"/><text x="531.38" y="287.65" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">3</text>
+<circle cx="429.53" cy="263.75" r="4" fill="#172b49"/><text x="418.62" y="287.65" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">4</text>
+<circle cx="384.07" cy="185.00" r="4" fill="#172b49"/><text x="362.24" y="190.00" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">5</text>
+<circle cx="429.53" cy="106.25" r="4" fill="#172b49"/><text x="418.62" y="92.35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">6</text>
+<text x="385" y="325" font-family="sans-serif" font-size="17" font-weight="700" fill="#172b49">13 · 25 · 46</text>
+<text x="617" y="191" font-family="sans-serif" font-size="25" fill="#354d69">→</text>
+<polygon points="795.00,80.00 885.93,132.50 885.93,237.50 795.00,290.00 704.07,237.50 704.07,132.50" fill="#ffffff" stroke="#405874" stroke-width="2"/>
+<line data-pair="13" x1="840.47" y1="106.25" x2="840.47" y2="263.75" stroke="#176a8a" stroke-width="4"/>
+<line data-pair="24" x1="885.93" y1="185.00" x2="749.53" y2="263.75" stroke="#a3472e" stroke-width="4"/>
+<line data-pair="56" x1="704.07" y1="185.00" x2="749.53" y2="106.25" stroke="#7c4996" stroke-width="4"/>
+<circle cx="840.47" cy="106.25" r="4" fill="#172b49"/><text x="851.38" y="92.35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">1</text>
+<circle cx="885.93" cy="185.00" r="4" fill="#172b49"/><text x="907.76" y="190.00" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">2</text>
+<circle cx="840.47" cy="263.75" r="4" fill="#172b49"/><text x="851.38" y="287.65" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">3</text>
+<circle cx="749.53" cy="263.75" r="4" fill="#172b49"/><text x="738.62" y="287.65" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">4</text>
+<circle cx="704.07" cy="185.00" r="4" fill="#172b49"/><text x="682.24" y="190.00" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">5</text>
+<circle cx="749.53" cy="106.25" r="4" fill="#172b49"/><text x="738.62" y="92.35" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="700" fill="#172b49">6</text>
+<text x="705" y="325" font-family="sans-serif" font-size="17" font-weight="700" fill="#172b49">13 · 24 · 56</text>
+</svg>

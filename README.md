@@ -26,12 +26,24 @@ This collection counts five projects, including new Lean certificates for the th
 
    Gross and Šarković, [Conjecture 2.10](https://arxiv.org/html/2607.02410v1#S2); about 5 months to the November 2026 result. The theorem does not settle every asymptotic regime.
 
+   ![Three side-labelled hexagons showing two genus-one chord swaps: 12 35 46, then 13 25 46, then 13 24 56.](assets/polygon-genus-one-swaps.svg)
+
+   *An illustrative two-swap path: the first swap keeps 46, the second keeps 13. Each matching has genus one; the theorem covers a broader family.*
+
 4. **14 Nov 2026 — [11- and 16-cube box-free colorings](proofs/boxfree-11/README.md).** The minimum number of monochromatic boxes is zero in both cubes.
 
    Alm and Miller, [Problem 1](https://arxiv.org/html/2611.19635v1#S8). This adapts [Menezes's earlier construction](https://arxiv.org/html/2609.22381v2#S3); about 12 days from the statement to this team's formalization, not a claim of discovery priority or time open.
 
+   ![Two 11 by 11 colored slices of the certified witness, at z equals 0 and z equals 2.](assets/boxfree-11-slices.svg)
+
+   *Two slices of the checked witness; Lean verifies the absence of monochromatic boxes throughout the whole cube.*
+
 5. **14 Nov 2026 — [Exact box-free height for 5 × 7](proofs/boxfree-5x7/README.md).** The largest height is 52, attaining the prior upper bound.
 
    Alm and Miller, [Problem 3 and §6](https://arxiv.org/html/2611.19635v1#S8); about 12 days from the statement to this team's November 26 result.
+
+   ![Two 5 by 7 colored layers, numbered 0 and 1, from the checked 52-layer witness.](assets/boxfree-5x7-layers.svg)
+
+   *Actual layers from the certificate. A same-color rectangle at the same coordinates in two layers would form a forbidden box; no such repetition occurs in the checked stack.*
 
 Future verified releases belong in the list by earliest located formulation, not by publication date. Ordering keys for later projects are unit C5 §6.1 (17 Dec 2025), odd-edge Conjecture 6 (17 Apr 2026), and dessins Conjecture 1.4 (8 Jun 2026); they enter the list only after their projects are verified and published.
