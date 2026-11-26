@@ -51,3 +51,19 @@ This collection counts six projects, including new Lean certificates for the thi
    *Actual layers from the certificate. A same-color rectangle at the same coordinates in two layers would form a forbidden box; no such repetition occurs in the checked stack.*
 
 Future verified releases belong in the list by earliest located formulation, not by publication date. Ordering keys for later projects are unit C5 §6.1 (17 Dec 2025) and dessins Conjecture 1.4 (8 Jun 2026); they enter the list only after their projects are verified and published.
+
+## Written results, oldest question first
+
+These results have reproducible computational checks, but are not formalized in Lean.
+
+1. **1979 — [Equal LCMs of six consecutive integers](research/erdos-lcm-six/README.md).** Two disjoint six-term runs cannot have the same least common multiple, even if they are adjacent. This resolves a fixed-length case of Erdős #677, not the general question.
+
+   ![The three known overlapping pairs of six-term runs with equal least common multiples.](research/erdos-lcm-six/collisions.svg)
+
+2. **2014 — [Eight-cycles in degree-3-critical graphs](research/degree-three-critical-c8/README.md).** Every degree-3-critical graph on at least eight vertices has a simple cycle of length eight. This is the length-eight case of the even-cycle question.
+
+   ![The exceptional eight-vertex graph, highlighting the smaller K3,3 that rules it out.](research/degree-three-critical-c8/exception.svg)
+
+3. **2019 — [Testing every five-way combination of ten binary flags](research/covering-array-55/README.md).** Exactly 56 tests are needed to cover every on/off pattern on any five of the ten flags, versus 1,024 tests for exhaustive coverage of all ten.
+
+   ![Three compatible slices forming a triangle in the covering-array test.](research/covering-array-55/corner.svg)

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 210" role="img" aria-labelledby="title desc">
+  <title id="title">The triangle required by three zero slices</title>
+  <desc id="desc">Schematic. With the common 000 corner fixed, each pair of the neighboring seven-bit row sets belongs to one zero slice.</desc>
+  <rect width="500" height="210" fill="#fff"/>
+  <g font-family="system-ui,sans-serif" text-anchor="middle">
+    <text x="250" y="20" fill="#344253" font-size="14">Schematic · common corner 000</text>
+    <path d="M250 49 94 156H406Z" fill="#f0f6f6" stroke="#22645d" stroke-width="2.5"/>
+    <g fill="#163c39" font-size="14">
+      <text x="141" y="94">y = 0</text><text x="359" y="94">x = 0</text><text x="250" y="178">z = 0</text>
+    </g>
+    <g fill="#163c39"><circle cx="250" cy="49" r="5"/><circle cx="94" cy="156" r="5"/><circle cx="406" cy="156" r="5"/></g>
+    <g fill="#172837" font-size="15" font-weight="600">
+      <text x="250" y="75">001</text><text x="64" y="161">100</text><text x="436" y="161">010</text>
+    </g>
+    <text x="250" y="201" fill="#344253" font-size="13">Each vertex represents a set of seven-bit rows.</text>
+  </g>
+</svg>
