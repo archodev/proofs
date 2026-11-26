@@ -8,13 +8,13 @@ The two lists are oldest first. The ages run from the earliest formulation we lo
 
 1. **1992 · [Finite triangle-free networks with a fresh witness](proofs/finite-ectf/README.md).** Pick a size limit. A finite triangle-free network can be built so that every small request for a new node to connect to one group and avoid another is met, as long as the group it connects to contains no links. The theorem works for every size limit. [Cherlin, Problems 8–9](https://sites.math.rutgers.edu/~cherlin/Paper/1992CombProblems.pdf), about 34 years. Lean checks the finite graph claim; Henson pseudofiniteness follows by a known equivalence.
 
-   ![Vertex 6 joins vertices 1 and 3 but avoids 2 and 4.](assets/finite-ectf-example.svg)
+   ![Vertex 6 joins vertices 1 and 3 but avoids 2 and 4.](assets/illustrations/finite-ectf.svg)
 
    *A single extension request, not a whole graph with the extension property.*
 
 2. **2012 · [Two thin-cuboid counterexamples](proofs/thin-cuboid/README.md).** Remove a cube only when it touches exactly three remaining cubes by a face. These two dismantlings leave 17 isolated cubes in a 2 × 3 × 9 block and 15 in a 3 × 3 × 6 block, refuting two clauses of [Barát and Wanless’s conjecture](https://arxiv.org/html/2603.23913#S6). The [earlier constructions](https://arxiv.org/abs/2209.07594) are newly checked in Lean here, about 14 years after the stated problem.
 
-   ![Slice grids for the 17 and 15 surviving cubes.](assets/thin-cuboid-slices.svg)
+   ![Slice grids for the 17 and 15 surviving cubes.](assets/illustrations/thin-cuboid.svg)
 
    *Filled cells show the actual survivors checked in Lean.*
 
@@ -38,19 +38,19 @@ The two lists are oldest first. The ages run from the earliest formulation we lo
 
 6. **2 Jul 2026 · [How many swaps between polygon matchings?](proofs/polygon-matching-diameter/README.md).** Pair the numbered sides of a polygon, then glue them to make a surface with `g` handles. When there are `2g + 1` pairs, at most `32g` pair swaps connect any two matching patterns while preserving the handle count. That refutes [the proposed uniform lower bound](https://arxiv.org/html/2607.02410v1#S2), not every variant of the question. About 5 months.
 
-   ![Two swaps between labeled pairings on six sides.](assets/polygon-genus-one-swaps.svg)
+   ![Two swaps between labeled pairings on six sides.](assets/illustrations/polygon-matching-diameter.svg)
 
    *This two-swap example keeps one handle throughout.*
 
 7. **14 Nov 2026 · [Box-free 11- and 16-cubes](proofs/boxfree-11/README.md).** Two colors suffice to color either cube grid so that no axis-aligned box has eight corners of the same color. The Lean certificates adapt [Menezes’s earlier construction](https://arxiv.org/html/2609.22381v2#S3). [Alm and Miller, Problem 1](https://arxiv.org/html/2611.19635v1#S8), 12 days.
 
-   ![Two exact colored slices of the checked 11-cube.](assets/boxfree-11-slices.svg)
+   ![Two exact colored slices of the checked 11-cube.](assets/illustrations/boxfree-11.svg)
 
    *The proof checks every box in the cube, not just these two slices.*
 
 8. **14 Nov 2026 · [Exactly 52 box-free layers](proofs/boxfree-5x7/README.md).** Stack two-colored 5 × 7 grids without creating a box with eight same-color corners. A checked 52-layer example meets the upper bound: 53 layers are impossible. [Alm and Miller, Problem 3](https://arxiv.org/html/2611.19635v1#S6), 12 days.
 
-   ![Two exact layers from the checked 52-layer stack.](assets/boxfree-5x7-layers.svg)
+   ![Two exact layers from the checked 52-layer stack.](assets/illustrations/boxfree-5x7.svg)
 
    *A same-color rectangle repeated in the same position across layers would make a forbidden box.*
 

@@ -1,1 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 310" role="img" aria-labelledby="title desc"><title id="title">The rule at one vertex</title><desc id="desc">Illustrative local configurations. Three, one and one are all odd, while two, two and one is disallowed.</desc><rect width="820" height="310" rx="22" fill="#f3f7fc"/><g font-family="system-ui,sans-serif"><text x="30" y="39" fill="#112a43" font-size="25" font-weight="700" text-anchor="start">The rule at one vertex</text><rect x="47" y="64" width="344" height="218" rx="15" fill="#fff"/><text x="219" y="98" fill="#112a43" font-size="20" font-weight="700" text-anchor="middle">Allowed</text><line x1="219" y1="168" x2="170.49611766894716" y2="152.24013328687766" stroke="#2165d4" stroke-width="6" stroke-linecap="round"/><circle cx="170.49611766894716" cy="152.24013328687766" r="7" fill="#2165d4" stroke="#fff" stroke-width="2"/><line x1="219" y1="168" x2="219.0" y2="117.0" stroke="#2165d4" stroke-width="6" stroke-linecap="round"/><circle cx="219.0" cy="117.0" r="7" fill="#2165d4" stroke="#fff" stroke-width="2"/><line x1="219" y1="168" x2="267.5038823310528" y2="152.2401332868777" stroke="#2165d4" stroke-width="6" stroke-linecap="round"/><circle cx="267.5038823310528" cy="152.2401332868777" r="7" fill="#2165d4" stroke="#fff" stroke-width="2"/><line x1="219" y1="168" x2="248.97704786691614" y2="209.25986671312234" stroke="#007d75" stroke-width="6" stroke-linecap="round"/><circle cx="248.97704786691614" cy="209.25986671312234" r="7" fill="#007d75" stroke="#fff" stroke-width="2"/><line x1="219" y1="168" x2="189.0229521330839" y2="209.25986671312234" stroke="#b65329" stroke-width="6" stroke-linecap="round"/><circle cx="189.0229521330839" cy="209.25986671312234" r="7" fill="#b65329" stroke="#fff" stroke-width="2"/><circle cx="219" cy="168" r="9" fill="#112a43" stroke="#fff" stroke-width="2"/><text x="219" y="252" fill="#4d6073" font-size="16" font-weight="600" text-anchor="middle">3 blue  /  1 teal  /  1 orange</text><rect x="429" y="64" width="344" height="218" rx="15" fill="#fff"/><text x="601" y="98" fill="#112a43" font-size="20" font-weight="700" text-anchor="middle">Not allowed</text><line x1="601" y1="168" x2="552.4961176689471" y2="152.24013328687766" stroke="#2165d4" stroke-width="6" stroke-linecap="round"/><circle cx="552.4961176689471" cy="152.24013328687766" r="7" fill="#2165d4" stroke="#fff" stroke-width="2"/><line x1="601" y1="168" x2="601.0" y2="117.0" stroke="#2165d4" stroke-width="6" stroke-linecap="round"/><circle cx="601.0" cy="117.0" r="7" fill="#2165d4" stroke="#fff" stroke-width="2"/><line x1="601" y1="168" x2="649.5038823310529" y2="152.2401332868777" stroke="#007d75" stroke-width="6" stroke-linecap="round"/><circle cx="649.5038823310529" cy="152.2401332868777" r="7" fill="#007d75" stroke="#fff" stroke-width="2"/><line x1="601" y1="168" x2="630.9770478669161" y2="209.25986671312234" stroke="#007d75" stroke-width="6" stroke-linecap="round"/><circle cx="630.9770478669161" cy="209.25986671312234" r="7" fill="#007d75" stroke="#fff" stroke-width="2"/><line x1="601" y1="168" x2="571.0229521330839" y2="209.25986671312234" stroke="#b65329" stroke-width="6" stroke-linecap="round"/><circle cx="571.0229521330839" cy="209.25986671312234" r="7" fill="#b65329" stroke="#fff" stroke-width="2"/><circle cx="601" cy="168" r="9" fill="#112a43" stroke="#fff" stroke-width="2"/><text x="601" y="252" fill="#4d6073" font-size="16" font-weight="600" text-anchor="middle">2 blue  /  2 teal  /  1 orange</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-labelledby="t d" font-family="Helvetica, Arial, sans-serif">
+  <title id="t">Color the links: zero or odd at each point</title>
+  <desc id="d">Two stars, each made of five straight links that meet at one center point. Each link is colored blue, teal or rust. In the allowed star, 3 blue, 1 teal and 1 rust link meet the center. Every count is odd, and any color with 0 links there is also fine. In the not-allowed star, 2 blue, 2 teal and 1 rust link meet the center. Blue and teal have even counts, which breaks the rule. Takeaway: in any network that meets the theorem's conditions, the links can be colored with at most three colors so that every point obeys this rule. The stars show only one point. They are not claimed to be whole networks that meet those conditions.</desc>
+
+  <rect x="0" y="0" width="1200" height="800" fill="#faf7ef"/>
+
+  <!-- Title -->
+  <text x="600" y="58" text-anchor="middle" font-size="36" font-weight="700" fill="#1f1d1a">Color the links: zero or odd at each point</text>
+  <text x="600" y="96" text-anchor="middle" font-size="21" fill="#1f1d1a">Count each color's links at the center point.  Allowed: 0, 1, 3, 5…   Not allowed: 2, 4, 6…</text>
+
+  <!-- Panels -->
+  <rect x="40" y="120" width="540" height="490" rx="18" fill="#ffffff" fill-opacity="0.55" stroke="#1f8a80" stroke-width="4"/>
+  <rect x="620" y="120" width="540" height="490" rx="18" fill="#ffffff" fill-opacity="0.55" stroke="#b5532a" stroke-width="4"/>
+
+  <!-- Left header: check icon -->
+  <circle cx="82" cy="160" r="20" fill="#1f8a80"/>
+  <path d="M72 161 L80 169 L93 152" fill="none" stroke="#faf7ef" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="114" y="171" font-size="32" font-weight="700" fill="#1f1d1a">Allowed</text>
+  <text x="114" y="200" font-size="19" fill="#1f1d1a">each used color has an odd count</text>
+
+  <!-- Right header: cross icon -->
+  <circle cx="662" cy="160" r="20" fill="#b5532a"/>
+  <path d="M653 151 L671 169 M671 151 L653 169" fill="none" stroke="#faf7ef" stroke-width="5" stroke-linecap="round"/>
+  <text x="694" y="171" font-size="32" font-weight="700" fill="#1f1d1a">Not allowed</text>
+  <text x="694" y="200" font-size="19" fill="#1f1d1a">blue and teal each have 2 (even)</text>
+
+  <!-- LEFT STAR: center (210,380). 3 blue, 1 teal, 1 rust -->
+  <g stroke-width="10" stroke-linecap="round" fill="none">
+    <line x1="210" y1="380" x2="76.9" y2="336.7" stroke="#2b5fa8"/>
+    <line x1="210" y1="380" x2="210" y2="240" stroke="#2b5fa8"/>
+    <line x1="210" y1="380" x2="343.1" y2="336.7" stroke="#2b5fa8"/>
+    <line x1="210" y1="380" x2="292.3" y2="493.3" stroke="#1f8a80" stroke-dasharray="18 10"/>
+    <line x1="210" y1="380" x2="127.7" y2="493.3" stroke="#b5532a" stroke-dasharray="1 15"/>
+  </g>
+  <g fill="#faf7ef" stroke="#1f1d1a" stroke-width="3.5">
+    <circle cx="76.9" cy="336.7" r="9"/>
+    <circle cx="210" cy="240" r="9"/>
+    <circle cx="343.1" cy="336.7" r="9"/>
+    <circle cx="292.3" cy="493.3" r="9"/>
+    <circle cx="127.7" cy="493.3" r="9"/>
+  </g>
+  <circle cx="210" cy="380" r="15" fill="#1f1d1a" stroke="#faf7ef" stroke-width="4"/>
+  <text x="210" y="552" text-anchor="middle" font-size="20" font-weight="700" fill="#1f1d1a">Black dot = the one point</text>
+  <text x="210" y="578" text-anchor="middle" font-size="20" fill="#1f1d1a">we count at</text>
+
+  <!-- LEFT counts -->
+  <line x1="380" y1="272" x2="420" y2="272" stroke="#2b5fa8" stroke-width="10" stroke-linecap="round"/>
+  <text x="434" y="282" font-size="28" font-weight="700" fill="#1f1d1a">Blue: 3</text>
+  <text x="434" y="306" font-size="18" fill="#1f8a80" font-weight="700">odd: OK</text>
+
+  <line x1="380" y1="342" x2="420" y2="342" stroke="#1f8a80" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 10"/>
+  <text x="434" y="352" font-size="28" font-weight="700" fill="#1f1d1a">Teal: 1</text>
+  <text x="434" y="376" font-size="18" fill="#1f8a80" font-weight="700">odd: OK</text>
+
+  <line x1="380" y1="412" x2="420" y2="412" stroke="#b5532a" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 15"/>
+  <text x="434" y="422" font-size="28" font-weight="700" fill="#1f1d1a">Rust: 1</text>
+  <text x="434" y="446" font-size="18" fill="#1f8a80" font-weight="700">odd: OK</text>
+
+  <text x="380" y="492" font-size="20" font-weight="700" fill="#1f1d1a">Any other color: 0</text>
+  <text x="380" y="516" font-size="18" fill="#1f8a80" font-weight="700">zero: also OK</text>
+
+  <!-- RIGHT STAR: center (790,380). 2 blue, 2 teal, 1 rust -->
+  <g stroke-width="10" stroke-linecap="round" fill="none">
+    <line x1="790" y1="380" x2="790" y2="240" stroke="#2b5fa8"/>
+    <line x1="790" y1="380" x2="923.1" y2="336.7" stroke="#2b5fa8"/>
+    <line x1="790" y1="380" x2="872.3" y2="493.3" stroke="#1f8a80" stroke-dasharray="18 10"/>
+    <line x1="790" y1="380" x2="656.9" y2="336.7" stroke="#1f8a80" stroke-dasharray="18 10"/>
+    <line x1="790" y1="380" x2="707.7" y2="493.3" stroke="#b5532a" stroke-dasharray="1 15"/>
+  </g>
+  <g fill="#faf7ef" stroke="#1f1d1a" stroke-width="3.5">
+    <circle cx="790" cy="240" r="9"/>
+    <circle cx="923.1" cy="336.7" r="9"/>
+    <circle cx="872.3" cy="493.3" r="9"/>
+    <circle cx="656.9" cy="336.7" r="9"/>
+    <circle cx="707.7" cy="493.3" r="9"/>
+  </g>
+  <circle cx="790" cy="380" r="15" fill="#1f1d1a" stroke="#faf7ef" stroke-width="4"/>
+  <text x="790" y="552" text-anchor="middle" font-size="20" font-weight="700" fill="#1f1d1a">Black dot = the one point</text>
+  <text x="790" y="578" text-anchor="middle" font-size="20" fill="#1f1d1a">we count at</text>
+
+  <!-- RIGHT counts -->
+  <line x1="960" y1="272" x2="1000" y2="272" stroke="#2b5fa8" stroke-width="10" stroke-linecap="round"/>
+  <text x="1014" y="282" font-size="28" font-weight="700" fill="#1f1d1a">Blue: 2</text>
+  <text x="1014" y="306" font-size="18" fill="#b5532a" font-weight="700">even: not OK</text>
+
+  <line x1="960" y1="342" x2="1000" y2="342" stroke="#1f8a80" stroke-width="10" stroke-linecap="round" stroke-dasharray="18 10"/>
+  <text x="1014" y="352" font-size="28" font-weight="700" fill="#1f1d1a">Teal: 2</text>
+  <text x="1014" y="376" font-size="18" fill="#b5532a" font-weight="700">even: not OK</text>
+
+  <line x1="960" y1="412" x2="1000" y2="412" stroke="#b5532a" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 15"/>
+  <text x="1014" y="422" font-size="28" font-weight="700" fill="#1f1d1a">Rust: 1</text>
+  <text x="1014" y="446" font-size="18" fill="#1f8a80" font-weight="700">odd: OK</text>
+
+  <!-- Takeaway -->
+  <rect x="40" y="630" width="1120" height="145" rx="16" fill="#efe8d6" stroke="#1f1d1a" stroke-width="2.5"/>
+  <text x="600" y="672" text-anchor="middle" font-size="24" font-weight="700" fill="#1f1d1a">The result: three colors suffice when these conditions hold.</text>
+  <text x="600" y="706" text-anchor="middle" font-size="24" fill="#1f1d1a">They have an odd number of points and at least 4 links per point.</text>
+  <text x="600" y="748" text-anchor="middle" font-size="18" fill="#1f1d1a">They must stay connected even after any two points are removed.</text>
+</svg>
