@@ -4,3 +4,4 @@
 - [Box-free colorings of the 11- and 16-cube](proofs/boxfree-11/README.md): Lean certificates that the minimum monochromatic box count is zero.
 - [Exact box-free height for 5 × 7](proofs/boxfree-5x7/README.md): a Lean certificate that the largest height is 52.
 - [Finite existentially complete triangle-free graphs](proofs/finite-ectf/README.md): a Lean proof of the finite extension property for every natural k.
+- [Polygon matching diameter](proofs/polygon-matching-diameter/README.md): a labelled diameter bound for n = 2g + 1 and a refutation of a uniform joint lower bound.
